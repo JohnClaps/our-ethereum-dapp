@@ -23,7 +23,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Up
 import ConnectWallet from "./components/ConnectWallet";
 import UserPage from "./components/UserPage";
 import { Dapp } from "./components/Dapp"; // Import Dapp component
-import Register from './components/screens/Authentication/Register'; 
+import Register from './components/screens/authentication/Register'; 
 import "bootstrap/dist/css/bootstrap.css";
 
 // This is the entry point of your application, which now includes routing logic.
@@ -36,6 +36,7 @@ root.render(
         <Route path="/" element={<ConnectWallet />} /> {/* Updated component prop to element */}
         <Route path="/user/:userAddress" element={<UserPage />} /> {/* Updated component prop to element */}
         <Route path="/dapp" element={<Dapp />} /> {/* Updated component prop to element */}
+        <Route path="./screens/authentication/register" element={<Register/>}/>
       </Routes>
     </Router>
   </React.StrictMode>

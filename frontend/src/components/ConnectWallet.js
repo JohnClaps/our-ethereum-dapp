@@ -263,7 +263,7 @@ export function ConnectWallet({ networkError, dismiss }) {
             <img src={metamaskLogo} alt="Metamask Logo" style={styles.logo} />
             Login with Metamask
           </button>
-          <button style={styles.authButton}>Sign Up</button>
+          <button style={styles.authButton} onClick={""} >Sign Up</button>
         </div>
       </div>
 
