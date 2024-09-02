@@ -18,10 +18,10 @@ CREATE TABLE transactions (
     mineral_id INT REFERENCES minerals(id),
     quantity DECIMAL(18, 8),
     transaction_date TIMESTAMP NOT NULL,
+
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
 /*License Information Table*/
 CREATE TABLE licenses (
     id SERIAL PRIMARY KEY,

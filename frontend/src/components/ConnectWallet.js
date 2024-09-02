@@ -315,7 +315,7 @@ export function ConnectWallet({ networkError, dismiss }) {
             />
             <Carousel.Caption>
               <h3>First Slide Label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <p>Our trusted blockchain powered mining transactions monitoring system.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -326,8 +326,8 @@ export function ConnectWallet({ networkError, dismiss }) {
               style={styles.carouselImage}
             />
             <Carousel.Caption>
-              <h3>Second Slide Label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>Mining Industry</h3>
+              <p>The road towards MW2063 agenda</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -338,8 +338,8 @@ export function ConnectWallet({ networkError, dismiss }) {
               style={styles.carouselImage}
             />
             <Carousel.Caption>
-              <h3>Third Slide Label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              <h3>Miners</h3>
+              <p>Malawi,the warm heart of Africa accommodates both foreing and local investors.</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
@@ -363,9 +363,9 @@ const styles = {
     background: "linear-gradient(135deg, #2c3e50, #4ca1af)",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
     color: "#fff",
+    justifyContent: "center",
   },
   topBar: {
     position: "absolute",

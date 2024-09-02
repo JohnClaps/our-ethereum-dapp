@@ -23,8 +23,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Up
 import ConnectWallet from "./components/ConnectWallet";
 import UserPage from "./components/UserPage";
 import { Dapp } from "./components/Dapp"; // Import Dapp component
-
-// We import bootstrap here, but you can remove it if you want
+import Register from './components/screens/Authentication/Register'; 
 import "bootstrap/dist/css/bootstrap.css";
 
 // This is the entry point of your application, which now includes routing logic.
