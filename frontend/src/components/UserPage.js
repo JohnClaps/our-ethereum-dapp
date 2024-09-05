@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams } from "react-router-dom";
 
@@ -9,8 +8,7 @@ export function UserPage() {
     <div style={styles.container}>
       <h1>Welcome, {userAddress}</h1>
       <p>This is your personalized dashboard.</p>
-      {/* User specific content goes below the comment.Its gonna be different from the reality altogether */}
-
+      {/* Add more user-specific content here */}
     </div>
   );
 }

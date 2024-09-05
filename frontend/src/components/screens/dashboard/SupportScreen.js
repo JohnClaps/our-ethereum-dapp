@@ -1,94 +1,176 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+// import React from 'react';
+// import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+// import { BsChatDots, BsEnvelope, BsTelephone, BsQuestionCircle, BsStar } from 'react-icons/bs';
 
-const SupportScreen = ({ onOptionSelect }) => {
+// const SupportScreen = ({ onOptionSelect }) => {
+//   return (
+//     <Container fluid className="bg-light py-4">
+//       {/* Header Section */}
+//       <h1 className="text-primary mb-4">Support</h1>
+
+//       {/* Support Options */}
+//       <OptionButton
+//         icon={<BsChatDots />}
+//         label="Live Chat"
+//         onPress={() => onOptionSelect('Live Chat')}
+//       />
+//       <OptionButton
+//         icon={<BsEnvelope />}
+//         label="Email Support"
+//         onPress={() => onOptionSelect('Email Support')}
+//       />
+//       <OptionButton
+//         icon={<BsTelephone />}
+//         label="Phone Support"
+//         onPress={() => onOptionSelect('Phone Support')}
+//       />
+//       <OptionButton
+//         icon={<BsQuestionCircle />}
+//         label="FAQs"
+//         onPress={() => onOptionSelect('FAQs')}
+//       />
+
+//       {/* Feedback Button */}
+//       <Button
+//         variant="primary"
+//         className="d-flex align-items-center mt-4"
+//         onClick={() => onOptionSelect('Give Feedback')}
+//       >
+//         <BsStar className="me-2" />
+//         Give Feedback
+//       </Button>
+//     </Container>
+//   );
+// };
+
+// // Reusable OptionButton Component
+// const OptionButton = ({ icon, label, onPress }) => (
+//   <Card className="mb-3" onClick={onPress} style={{ cursor: 'pointer' }}>
+//     <Card.Body className="d-flex align-items-center">
+//       <span className="text-primary fs-4">{icon}</span>
+//       <h5 className="ms-3 mb-0 text-primary">{label}</h5>
+//     </Card.Body>
+//   </Card>
+// );
+
+// export default SupportScreen;
+
+
+import React, { useState } from 'react';
+import { Card, Row, Col, Container, Form, Button, Table } from 'react-bootstrap';
+import { FaQuestionCircle, FaTicketAlt, FaInbox, FaExclamationCircle } from 'react-icons/fa';
+// import './SupportScreen.css'; // Assuming you have a CSS file for custom styles
+
+const SupportScreen = () => {
+  const [ticketType, setTicketType] = useState('Technical');
+  const [description, setDescription] = useState('');
+
+  const handleTicketTypeChange = (event) => {
+    setTicketType(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    // Implement ticket submission logic here
+    alert('Support ticket submitted!');
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      {/* Header Section */}
-      <Text style={styles.header}>Support</Text>
+    <div className="support-screen">
+      <Container fluid>
+        <h3 className="text-center mb-4">Support Center</h3>
 
-      {/* Support Options */}
-      <OptionButton
-        iconName="chatbubble-outline"
-        label="Live Chat"
-        onPress={() => onOptionSelect('Live Chat')}
-      />
-      <OptionButton
-        iconName="mail-outline"
-        label="Email Support"
-        onPress={() => onOptionSelect('Email Support')}
-      />
-      <OptionButton
-        iconName="call-outline"
-        label="Phone Support"
-        onPress={() => onOptionSelect('Phone Support')}
-      />
-      <OptionButton
-        iconName="help-circle-outline"
-        label="FAQs"
-        onPress={() => onOptionSelect('FAQs')}
-      />
+        {/* Submit Ticket */}
+        <Row className="mb-4">
+          <Col md={6}>
+            <Card className="shadow-sm">
+              <Card.Body>
+                <Card.Title className="text-primary mb-4">
+                  <FaTicketAlt size={24} className="me-2" />
+                  Submit a Support Ticket
+                </Card.Title>
+                <Form>
+                  <Form.Group className="mb-3">
+                    <Form.Label><FaQuestionCircle size={20} className="me-2" /> Ticket Type</Form.Label>
+                    <Form.Control as="select" value={ticketType} onChange={handleTicketTypeChange}>
+                      <option value="Technical">Technical Issue</option>
+                      <option value="Billing">Billing Issue</option>
+                      <option value="General">General Inquiry</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label><FaExclamationCircle size={20} className="me-2" /> Description</Form.Label>
+                    <Form.Control as="textarea" rows={4} value={description} onChange={handleDescriptionChange} />
+                  </Form.Group>
+                  <Button variant="primary" onClick={handleSubmit}>Submit Ticket</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
 
-      {/* Feedback Button */}
-      <TouchableOpacity
-        style={styles.feedbackButton}
-        onPress={() => onOptionSelect('Give Feedback')}
-      >
-        <Ionicons name="star-outline" size={24} color="white" />
-        <Text style={styles.feedbackText}>Give Feedback</Text>
-      </TouchableOpacity>
-    </ScrollView>
+          {/* Recent Tickets */}
+          <Col md={6}>
+            <Card className="shadow-sm">
+              <Card.Body>
+                <Card.Title className="text-primary mb-4">
+                  <FaInbox size={24} className="me-2" />
+                  Recent Support Tickets
+                </Card.Title>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Ticket ID</th>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Replace with dynamic data */}
+                    <tr>
+                      <td>1</td>
+                      <td>2024-09-01</td>
+                      <td>Technical</td>
+                      <td>Open</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>2024-09-02</td>
+                      <td>Billing</td>
+                      <td>Closed</td>
+                    </tr>
+                    {/* Add more rows as needed */}
+                  </tbody>
+                </Table>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* FAQs */}
+        <Row>
+          <Col>
+            <Card className="shadow-sm">
+              <Card.Body>
+                <Card.Title className="text-primary mb-4">
+                  <FaQuestionCircle size={24} className="me-2" />
+                  Frequently Asked Questions
+                </Card.Title>
+                <ul>
+                  <li>How do I reset my password?</li>
+                  <li>How can I contact customer support?</li>
+                  <li>Where can I find the user manual?</li>
+                </ul>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
-
-// Reusable OptionButton Component
-const OptionButton = ({ iconName, label, onPress }) => (
-  <TouchableOpacity style={styles.option} onPress={onPress}>
-    <Ionicons name={iconName} size={24} color="#004D40" />
-    <Text style={styles.optionText}>{label}</Text>
-  </TouchableOpacity>
-);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#E0F2F1',
-    paddingHorizontal: 20,
-    paddingTop: 30,
-  },
-  header: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#004D40',
-    marginBottom: 20,
-  },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#B2DFDB',
-  },
-  optionText: {
-    marginLeft: 15,
-    fontSize: 18,
-    color: '#004D40',
-  },
-  feedbackButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
-    backgroundColor: '#1976D2',
-    borderRadius: 10,
-    marginTop: 30,
-  },
-  feedbackText: {
-    marginLeft: 15,
-    fontSize: 18,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
 
 export default SupportScreen;

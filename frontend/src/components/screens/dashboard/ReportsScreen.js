@@ -1,94 +1,106 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { Card, Row, Col, Container, Form, Button, Table } from 'react-bootstrap';
+import { FaDownload, FaFilter, FaFileAlt, FaCalendarAlt } from 'react-icons/fa';
+// import './ReportsScreen.css'; // Assuming you have a CSS file for custom styles
 
-const ReportsScreen = ({ onOptionSelect }) => {
+const ReportsScreen = () => {
+  const [dateRange, setDateRange] = useState('last30days');
+  const [reportType, setReportType] = useState('all');
+
+  const handleFilterChange = (event) => {
+    setDateRange(event.target.value);
+  };
+
+  const handleReportTypeChange = (event) => {
+    setReportType(event.target.value);
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      {/* Header Section */}
-      <Text style={styles.header}>Reports</Text>
+    <div className="reports-screen">
+      <Container fluid>
+        <h3 className="text-center mb-4">System Reports</h3>
+        
+        {/* Filters and Actions */}
+        <Row className="mb-4">
+          <Col md={4}>
+            <Form.Group>
+              <Form.Label><FaCalendarAlt size={20} className="me-2" /> Date Range</Form.Label>
+              <Form.Control as="select" value={dateRange} onChange={handleFilterChange}>
+                <option value="last7days">Last 7 Days</option>
+                <option value="last30days">Last 30 Days</option>
+                <option value="last90days">Last 90 Days</option>
+                <option value="custom">Custom Range</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
+          <Col md={4}>
+            <Form.Group>
+              <Form.Label><FaFilter size={20} className="me-2" /> Report Type</Form.Label>
+              <Form.Control as="select" value={reportType} onChange={handleReportTypeChange}>
+                <option value="all">All Reports</option>
+                <option value="financial">Financial</option>
+                <option value="operational">Operational</option>
+                <option value="compliance">Compliance</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
+          <Col md={4} className="d-flex align-items-end">
+            <Button variant="primary" className="me-2"><FaDownload size={20} /> Download Report</Button>
+          </Col>
+        </Row>
 
-      {/* Reports Options */}
-      <OptionButton
-        iconName="bar-chart-outline"
-        label="Sales Report"
-        onPress={() => onOptionSelect('Sales Report')}
-      />
-      <OptionButton
-        iconName="analytics-outline"
-        label="User Activity"
-        onPress={() => onOptionSelect('User Activity')}
-      />
-      <OptionButton
-        iconName="document-text-outline"
-        label="System Logs"
-        onPress={() => onOptionSelect('System Logs')}
-      />
-      <OptionButton
-        iconName="clipboard-outline"
-        label="Maintenance Reports"
-        onPress={() => onOptionSelect('Maintenance Reports')}
-      />
-
-      {/* Generate Report Button */}
-      <TouchableOpacity
-        style={styles.generateButton}
-        onPress={() => onOptionSelect('Generate Report')}
-      >
-        <Ionicons name="download-outline" size={24} color="white" />
-        <Text style={styles.generateText}>Generate Report</Text>
-      </TouchableOpacity>
-    </ScrollView>
+        {/* Report Table */}
+        <Row>
+          <Col>
+            <Card className="shadow-sm">
+              <Card.Body>
+                <Card.Title className="text-primary mb-4">
+                  <FaFileAlt size={24} className="me-2" />
+                  Report Details
+                </Card.Title>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Report Name</th>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Replace with dynamic data */}
+                    <tr>
+                      <td>1</td>
+                      <td>Monthly Financial Report</td>
+                      <td>2024-09-01</td>
+                      <td>Financial</td>
+                      <td>Completed</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Quarterly Operational Report</td>
+                      <td>2024-09-01</td>
+                      <td>Operational</td>
+                      <td>In Progress</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Annual Compliance Report</td>
+                      <td>2024-09-01</td>
+                      <td>Compliance</td>
+                      <td>Completed</td>
+                    </tr>
+                    {/* Add more rows as needed */}
+                  </tbody>
+                </Table>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
-
-// Reusable OptionButton Component
-const OptionButton = ({ iconName, label, onPress }) => (
-  <TouchableOpacity style={styles.option} onPress={onPress}>
-    <Ionicons name={iconName} size={24} color="#004D40" />
-    <Text style={styles.optionText}>{label}</Text>
-  </TouchableOpacity>
-);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#E0F2F1',
-    paddingHorizontal: 20,
-    paddingTop: 30,
-  },
-  header: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#004D40',
-    marginBottom: 20,
-  },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#B2DFDB',
-  },
-  optionText: {
-    marginLeft: 15,
-    fontSize: 18,
-    color: '#004D40',
-  },
-  generateButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
-    backgroundColor: '#388E3C',
-    borderRadius: 10,
-    marginTop: 30,
-  },
-  generateText: {
-    marginLeft: 15,
-    fontSize: 18,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
 
 export default ReportsScreen;

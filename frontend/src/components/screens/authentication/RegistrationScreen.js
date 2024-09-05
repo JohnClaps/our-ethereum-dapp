@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { Button, Form, Container, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
 
 // Component for the registration screen
-const Registration = () => {
+export const RegistrationScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
@@ -89,4 +90,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default RegistrationScreen;

@@ -12,8 +12,8 @@ import contractAddress from "../contracts/contract-address.json";
 // These other components are just presentational ones: they don't have any
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
+import { ConnectWallet } from "./ConnectWallet";
 import { Sidebar } from "./Sidebar";
-import {ConnectWallet} from "./ConnectWallet";
 import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
@@ -72,7 +72,7 @@ export class Dapp extends React.Component {
     // clicks a button. This callback just calls the _connectWallet method.
     if (!this.state.selectedAddress) {
       return (
-        <ConnectWallet
+        <ConnectWallet 
           connectWallet={() => this._connectWallet()} 
           networkError={this.state.networkError}
           dismiss={() => this._dismissNetworkError()}
@@ -174,9 +174,9 @@ export class Dapp extends React.Component {
     const [selectedAddress] = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
     // Once we have the address, we can initialize the application.
+
     // First we check the network
     this._checkNetwork();
-
 
     this._initialize(selectedAddress);
 
@@ -198,26 +198,27 @@ export class Dapp extends React.Component {
   _initialize(userAddress) {
     // This method initializes the dapp
 
-    // First store the user's address in the component's state
+    // We first store the user's address in the component's state
     this.setState({
       selectedAddress: userAddress,
     });
 
-    // Initialize ethers, fetch the token's data, and start polling
+    // Then, we initialize ethers, fetch the token's data, and start polling
     // for the user's balance.
 
-    // Fetching the token data and the user's balance and initialize the pattern.
+    // Fetching the token data and the user's balance are specific to this
+    // sample project, but you can reuse the same initialization pattern.
     this._initializeEthers();
     this._getTokenData();
     this._startPollingData();
   }
 
   async _initializeEthers() {
-    // First initialize ethers by creating a provider using window.ethereum
+    // We first initialize ethers by creating a provider using window.ethereum
     this._provider = new ethers.providers.Web3Provider(window.ethereum);
 
-    // Then initialize the contract using that provider and the token's
-    // artifact. The same thing can be done with smartcontracts
+    // Then, we initialize the contract using that provider and the token's
+    // artifact. You can do this same thing with your contracts.
     this._token = new ethers.Contract(
       contractAddress.Token,
       TokenArtifact.abi,
@@ -225,13 +226,17 @@ export class Dapp extends React.Component {
     );
   }
 
-  // The next two methods are needed to start and stop polling data.
-  // If update or poll not needed simply fetch it
-  // initialize the app, as as with the token data.
+  // The next two methods are needed to start and stop polling data. While
+  // the data being polled here is specific to this example, you can use this
+  // pattern to read any data from your contracts.
+  //
+  // Note that if you don't need it to update in near real time, you probably
+  // don't need to poll it. If that's the case, you can just fetch it when you
+  // initialize the app, as we do with the token data.
   _startPollingData() {
     this._pollDataInterval = setInterval(() => this._updateBalance(), 1000);
 
-    // Run it once immediately so to avoid waiting for it
+    // We run it once immediately so we don't have to wait for it
     this._updateBalance();
   }
 
@@ -240,7 +245,7 @@ export class Dapp extends React.Component {
     this._pollDataInterval = undefined;
   }
 
-  // The next two methods just read from the smart contract and store the results
+  // The next two methods just read from the contract and store the results
   // in the component state.
   async _getTokenData() {
     const name = await this._token.name();
@@ -255,7 +260,8 @@ export class Dapp extends React.Component {
   }
 
   // This method sends an ethereum transaction to transfer tokens.
-  // While this action is specific to this application + illustrates how to send transaction data
+  // While this action is specific to this application, it illustrates how to
+  // send a transaction.
   async _transferTokens(to, amount) {
     // Sending a transaction is a complex operation:
     //   - The user can reject it
@@ -271,7 +277,7 @@ export class Dapp extends React.Component {
     // do it.
 
     try {
-      // If a transaction fails, save that error in the component's state.
+      // If a transaction fails, we save that error in the component's state.
       // We only save one such error, so before sending a second transaction, we
       // clear it.
       this._dismissTransactionError();

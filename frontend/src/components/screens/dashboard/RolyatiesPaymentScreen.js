@@ -1,38 +1,100 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Card, Button } from 'react-native-paper';
+import { Card, Row, Col, Container, Button, Form } from 'react-bootstrap';
+import { FaDollarSign, FaRegListAlt, FaFileInvoiceDollar } from 'react-icons/fa';
+// import './MineralRoyaltiesPaymentScreen.css'; // Assuming you add custom styles here
 
-const RoyaltiesPaymentsScreen = () => {
+const RoyaltiesPaymentScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Royalties Payments</Text>
-      <Card style={styles.card}>
-        <Card.Title title="Make Payment" />
-        <Card.Content>
-          <Text>Manage and process your royalties payments here.</Text>
-        </Card.Content>
-        <Card.Actions>
-          <Button mode="contained" onPress={() => {history.pushState("")}}>Process Payment</Button>
-        </Card.Actions>
-      </Card>
-      {/* Add more payment options or information */}
-    </ScrollView>
+    <div className="royalties-payment-screen">
+      <Container fluid>
+        <h3 className="text-center mb-4">Mineral Royalties Payment Management</h3>
+        
+        {/* Summary Cards */}
+        <Row>
+          <Col md={4}>
+            <Card className="shadow-sm mb-4">
+              <Card.Body>
+                <Card.Title className="text-primary mb-4">
+                  <FaDollarSign size={24} className="me-2" />
+                  Total Royalties Due
+                </Card.Title>
+                <Card.Text className="text-success">
+                  <strong>$500,000</strong>
+                </Card.Text>
+                <Button variant="primary">View Details</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col md={4}>
+            <Card className="shadow-sm mb-4">
+              <Card.Body>
+                <Card.Title className="text-warning mb-4">
+                  <FaRegListAlt size={24} className="me-2" />
+                  Pending Payments
+                </Card.Title>
+                <Card.Text>
+                  <strong>3 Payments</strong>
+                </Card.Text>
+                <Button variant="warning">Review Pending</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col md={4}>
+            <Card className="shadow-sm mb-4">
+              <Card.Body>
+                <Card.Title className="text-info mb-4">
+                  <FaFileInvoiceDollar size={24} className="me-2" />
+                  Recent Invoices
+                </Card.Title>
+                <Card.Text>
+                  <strong>5 Invoices</strong>
+                </Card.Text>
+                <Button variant="info">View Invoices</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* Payment Form */}
+        <Card className="shadow-sm">
+          <Card.Body>
+            <Card.Title>Make a Payment</Card.Title>
+            <Form>
+              <Form.Group controlId="formMineralName">
+                <Form.Label>Mineral Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter mineral name" />
+              </Form.Group>
+
+              <Form.Group controlId="formAmount">
+                <Form.Label>Amount</Form.Label>
+                <Form.Control type="number" placeholder="Enter amount" />
+              </Form.Group>
+
+              <Form.Group controlId="formPaymentDate">
+                <Form.Label>Payment Date</Form.Label>
+                <Form.Control type="date" />
+              </Form.Group>
+
+              <Form.Group controlId="formPaymentMethod">
+                <Form.Label>Payment Method</Form.Label>
+                <Form.Control as="select">
+                  <option>Bank Transfer</option>
+                  <option>Credit Card</option>
+                  <option>PayPal</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Button variant="primary" className="mt-3" type="submit">
+                Submit Payment
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Container>
+    </div>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  card: {
-    marginBottom: 16,
-  },
-});
-
-export default RoyaltiesPaymentsScreen;
+export default RoyaltiesPaymentScreen;
