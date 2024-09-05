@@ -15,8 +15,8 @@ The first things you need to do are cloning this repository and installing its
 dependencies:
 
 ```sh
-git clone https://github.com/NomicFoundation/hardhat-boilerplate.git
-cd hardhat-boilerplate
+git clone https://github.com/JohnClaps/our-ethereum-dapp2.git
+cd our-ethereum-dapp2
 npm install
 ```
 
