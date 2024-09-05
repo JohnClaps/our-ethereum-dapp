@@ -15,8 +15,8 @@ The first things you need to do are cloning this repository and installing its
 dependencies:
 
 ```sh
-git clone https://github.com/JohnClaps/our-ethereum-dapp2.git
-cd our-ethereum-dapp2
+git clone https://github.com/JohnClaps/our-ethereum-dapp.git
+cd our-ethereum-dapp
 npm install
 ```
 
