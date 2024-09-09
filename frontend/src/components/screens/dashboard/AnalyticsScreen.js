@@ -1,96 +1,101 @@
 import React from 'react';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
-import { Line, Bar, Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js';
+import { Row, Col, Card } from 'react-bootstrap';
+import { Pie, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title } from 'chart.js';
 
-// Register the necessary Chart.js components
-ChartJS.register(Title, Tooltip, Legend, LineElement, BarElement, CategoryScale, LinearScale, ArcElement);
+// Register chart components
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title);
 
-const AnalyticsScreen = () => {
-  // Sample data for charts
-  const lineChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+function AnalyticsScreen() {
+  // Data for Pie Chart
+  const pieData = {
+    labels: ['Gold', 'Copper', 'Coal', 'Others'],
     datasets: [
       {
-        label: 'Monthly Revenue',
-        data: [4000, 4500, 3500, 5000, 6000, 5500],
-        borderColor: '#4e73df',
-        backgroundColor: 'rgba(78, 115, 223, 0.2)',
-        fill: true,
+        label: 'Mineral Distribution',
+        data: [30, 50, 70, 40],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
       },
     ],
   };
 
-  const barChartData = {
-    labels: ['Product A', 'Product B', 'Product C', 'Product D'],
+  // Data for Line Chart
+  const lineData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [
       {
-        label: 'Sales',
-        data: [2500, 3000, 2000, 4000],
-        backgroundColor: ['#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b'],
-      },
-    ],
-  };
-
-  const pieChartData = {
-    labels: ['Direct', 'Referral', 'Social'],
-    datasets: [
-      {
-        data: [55, 25, 20],
-        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+        label: 'Royalties Over Time',
+        data: [120000, 150000, 100000, 200000, 180000, 250000],
+        fill: false,
+        backgroundColor: '#36A2EB',
+        borderColor: '#36A2EB',
       },
     ],
   };
 
   return (
-    <Container fluid className="p-4">
-      <Row className="mb-4">
-        <Col md={6} className="mb-4">
-          <Card className="shadow">
-            <Card.Body>
-              <Card.Title>Monthly Revenue</Card.Title>
-              <Line data={lineChartData} />
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={6} className="mb-4">
-          <Card className="shadow">
-            <Card.Body>
-              <Card.Title>Product Sales</Card.Title>
-              <Bar data={barChartData} />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          <Card className="shadow">
-            <Card.Body>
-              <Card.Title>Traffic Sources</Card.Title>
-              <Pie data={pieChartData} />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+    <div>
+      <h2>Analytics Overview</h2>
       <Row className="mt-4">
-        <Col md={12}>
-          <Card className="shadow">
+        {/* Total Mining Transactions */}
+        <Col md={4}>
+          <Card className="mb-4">
             <Card.Body>
-              <Card.Title>Filters</Card.Title>
-              <Form>
-                <Form.Group controlId="formDateRange">
-                  <Form.Label>Date Range</Form.Label>
-                  <Form.Control type="date" />
-                  <Form.Control type="date" className="mt-2" />
-                </Form.Group>
-                <Button variant="primary" className="mt-3">Apply Filters</Button>
-              </Form>
+              <Card.Title>Total Mining Transactions</Card.Title>
+              <Card.Text>
+                <h3>1,234</h3>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        {/* Pie Chart for Mineral Distribution */}
+        <Col md={4}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>Mineral Distribution</Card.Title>
+              <Pie data={pieData} />
+            </Card.Body>
+          </Card>
+        </Col>
+
+        {/* Line Chart for Royalties */}
+        <Col md={4}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>Royalties Over Time</Card.Title>
+              <Line data={lineData} />
             </Card.Body>
           </Card>
         </Col>
       </Row>
-    </Container>
+
+      <Row>
+        {/* Additional Card for Sales */}
+        <Col md={6}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>Sales</Card.Title>
+              <Card.Text>
+                <h3>500 Units</h3>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        {/* Placeholder for future graphs */}
+        <Col md={6}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>Future Graph</Card.Title>
+              <Card.Text>Graph data will be displayed here.</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </div>
   );
-};
+}
 
 export default AnalyticsScreen;
