@@ -36,8 +36,8 @@ const UserManagementScreen = () => {
                     {/* Replace with dynamic data */}
                     <tr>
                       <td>1</td>
-                      <td>John Doe</td>
-                      <td>john.doe@example.com</td>
+                      <td>Leticia Kasamale</td>
+                      <td>leticiakasamale8@gmail.com</td>
                       <td>Admin</td>
                       <td>
                         <Button variant="warning" className="me-2">

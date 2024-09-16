@@ -49,11 +49,11 @@ function AnalyticsScreen() {
             </Card.Body>
           </Card>
         </Col>
-
         {/* Pie Chart for Mineral Distribution */}
         <Col md={4}>
           <Card className="mb-4">
             <Card.Body>
+
               <Card.Title>Mineral Distribution</Card.Title>
               <Pie data={pieData} />
             </Card.Body>
