@@ -22,9 +22,9 @@ app.post('/submit', async (req, res) => {
       'INSERT INTO users (ipfs_hash, username, metamask_id, phone_number, license_number) VALUES ($1, $2, $3, $4, $5)',
       [ipfsHash, username, metamaskId, phoneNumber, licenseNumber]
     );
-    res.status(200).send('Data successfully saved');
+    res.status(200).send('Registration successful');
   } catch (error) {
-    console.error('Error saving data to PostgreSQL:', error);
+    console.error('Error creating an account:', error);
     res.status(500).send('Internal Server Error');
   }
 });

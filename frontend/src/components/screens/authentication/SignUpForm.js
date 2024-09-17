@@ -71,7 +71,7 @@ export default function SignUpForm() {
         const ipfsHash = path; // Get IPFS CID
 
         // Assuming you have a backend API to handle this request
-        const response = await fetch('https://your-backend-api/submit', {
+        const response = await fetch('https://localhost:5000/submit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -80,12 +80,12 @@ export default function SignUpForm() {
         });
 
         if (response.ok) {
-          console.log("Form Data Successfully Submitted");
+          console.log("Account created successfully");
         } else {
-          console.error("Failed to submit form data");
+          console.error("Failed to create an account");
         }
       } catch (error) {
-        console.error("Error uploading to IPFS or saving to PostgreSQL:", error);
+        console.error("Failed to register successfully:", error);
       }
     }
   };
