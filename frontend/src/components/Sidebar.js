@@ -9,6 +9,7 @@ import SystemMonitoringScreen from "./screens/dashboard/SystemMonitoringScreen";
 import RoyaltiesPaymentScreen from './screens/dashboard/RolyatiesPaymentScreen';
 import AnalyticsScreen from "./screens/dashboard/AnalyticsScreen";
 import React, { useState, useEffect } from 'react';
+import profile from './images/profile.jpg';
 import { ListGroup, Container, Row, Col, Form, FormControl, Button, Card } from 'react-bootstrap';
 import {
   FaHome,
@@ -100,7 +101,8 @@ export const Sidebar = () => {
           </Form>
           <FaBell size={24} className="me-4" />
           <img 
-            src="https://via.placeholder.com/40" 
+          src = {profile}
+            // src="https://via.placeholder.com/40" 
             alt="Profile" 
             className="rounded-circle me-3" 
             style={{ width: '40px', height: '40px' }}
