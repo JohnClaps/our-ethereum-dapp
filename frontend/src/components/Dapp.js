@@ -18,7 +18,6 @@ import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
 import { NoTokensMessage } from "./NoTokensMessage";
-
 // This is the default id used by the Hardhat Network
 const HARDHAT_NETWORK_ID = '31337';
 

@@ -70,7 +70,7 @@ export default function SignUpForm() {
         const { path } = await ipfsClient.add(JSON.stringify(formData));
         const ipfsHash = path; // Get IPFS CID
 
-        // Assuming you have a backend API to handle this request
+        //Backend API to handle this request
         const response = await fetch('https://localhost:5000/submit', {
           method: 'POST',
           headers: {

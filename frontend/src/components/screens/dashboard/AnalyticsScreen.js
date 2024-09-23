@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 import { Pie, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title } from 'chart.js';
+// import { text } from '@fortawesome/fontawesome-svg-core';
 
 // Register chart components
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title);
@@ -36,7 +37,11 @@ function AnalyticsScreen() {
 
   return (
     <div>
-      <h2>Analytics Overview</h2>
+      <Card>
+      <h2 className="text-center mb-4">Analytics Overview</h2>
+      </Card>
+      <br/>
+
       <Row className="mt-4">
         {/* Total Mining Transactions */}
         <Col md={4}>

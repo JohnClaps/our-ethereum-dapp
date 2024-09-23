@@ -1,75 +1,16 @@
-// import React from 'react';
-// import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
-// import { BsPerson, BsBell, BsLock, BsGear, BsQuestionCircle, BsBoxArrowRight } from 'react-icons/bs';
-
-// const SettingsScreen = ({ onOptionSelect }) => {
-//   return (
-//     <Container className="pt-4">
-//       {/* Header */}
-//       <h2 className="text-success mb-4">Settings</h2>
-
-//       {/* Settings Options */}
-//       <ListGroup variant="flush">
-//         <OptionButton
-//           icon={<BsPerson />}
-//           label="Profile"
-//           onPress={() => onOptionSelect('Profile')}
-//         />
-//         <OptionButton
-//           icon={<BsBell />}
-//           label="Notifications"
-//           onPress={() => onOptionSelect('Notifications')}
-//         />
-//         <OptionButton
-//           icon={<BsLock />}
-//           label="Privacy"
-//           onPress={() => onOptionSelect('Privacy')}
-//         />
-//         <OptionButton
-//           icon={<BsGear />}
-//           label="Account"
-//           onPress={() => onOptionSelect('Account')}
-//         />
-//         <OptionButton
-//           icon={<BsQuestionCircle />}
-//           label="Help"
-//           onPress={() => onOptionSelect('Help')}
-//         />
-//       </ListGroup>
-
-//       {/* Logout Button */}
-//       <Button
-//         variant="danger"
-//         className="mt-4 d-flex align-items-center"
-//         onClick={() => onOptionSelect('Logout')}
-//       >
-//         <BsBoxArrowRight size={24} color="white" />
-//         <span className="ms-2">Logout</span>
-//       </Button>
-//     </Container>
-//   );
-// };
-
-// // Reusable OptionButton Component
-// const OptionButton = ({ icon, label, onPress }) => (
-//   <ListGroup.Item action onClick={onPress} className="d-flex align-items-center">
-//     {icon}
-//     <span className="ms-3">{label}</span>
-//   </ListGroup.Item>
-// );
-
-// export default SettingsScreen;
 import React from 'react';
 import { Card, Row, Col, Container, Form, Button } from 'react-bootstrap';
-import { FaCog, FaUser, FaLock, FaBell, FaLanguage } from 'react-icons/fa';
-// import './SettingsPage.css'; // Assuming you have a CSS file for custom styles
+import {  FaUser, FaLock, FaBell, FaLanguage } from 'react-icons/fa';
+import './styles/SettingsScreen.css';
 
-const SettingsPage = () => {
+const SettingsScreen = () => {
   return (
     <div className="settings-page">
-      <Container fluid>
+      <card>
         <h3 className="text-center mb-4">System Settings</h3>
-        
+      </card>
+      <br></br>
+      <Container fluid>
         <Row>
           <Col md={6}>
             <Card className="shadow-sm mb-4 settings-card">
@@ -85,10 +26,10 @@ const SettingsPage = () => {
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
                   </Form.Group>
                   <Button variant="primary" type="submit">Save Changes</Button>
                 </Form>
+                    <Form.Control type="password" placeholder="Password" />
               </Card.Body>
             </Card>
           </Col>
@@ -165,4 +106,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default SettingsScreen;

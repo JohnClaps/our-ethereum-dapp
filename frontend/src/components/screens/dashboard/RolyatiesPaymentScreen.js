@@ -7,7 +7,10 @@ const RoyaltiesPaymentScreen = () => {
   return (
     <div className="royalties-payment-screen">
       <Container fluid>
+        <Card>
         <h3 className="text-center mb-4">Mineral Royalties Payment Management</h3>
+        </Card>
+        <br></br>
         
         {/* Summary Cards */}
         <Row>
@@ -80,9 +83,9 @@ const RoyaltiesPaymentScreen = () => {
               <Form.Group controlId="formPaymentMethod">
                 <Form.Label>Payment Method</Form.Label>
                 <Form.Control as="select">
-                  <option>Bank Transfer</option>
-                  <option>Credit Card</option>
-                  <option>PayPal</option>
+                  <option>National Bank</option>
+                  <option>FDH Bank</option>
+                  <option>Standard Bank</option>
                 </Form.Control>
               </Form.Group>
 

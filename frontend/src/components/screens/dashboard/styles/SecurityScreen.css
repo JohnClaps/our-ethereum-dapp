@@ -1,10 +1,8 @@
-/* SecurityScreen.css
 .security-screen {
-    background: url('path_to_background_image.jpg') no-repeat center center fixed;
+    /* background: url('path_to_background_image.jpg') no-repeat center center fixed; */
     background-size: cover;
     padding: 20px;
-  }
-  
+  }  
   .card-body {
     display: flex;
     flex-direction: column;
@@ -24,4 +22,4 @@
   .card-title .me-2 {
     margin-right: 0.5rem;
   }
-   */
+  

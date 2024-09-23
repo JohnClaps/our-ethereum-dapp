@@ -7,8 +7,10 @@ const UserManagementScreen = () => {
   return (
     <div className="user-management-screen">
       <Container fluid>
+        <card>
         <h3 className="text-center mb-4">User Management</h3>
-
+        </card>
+        <br></br>
         {/* User List */}
         <Row className="mb-4">
           <Col md={8}>

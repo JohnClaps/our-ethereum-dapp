@@ -1,66 +1,3 @@
-// import React from 'react';
-// import { Container, ListGroup, Button } from 'react-bootstrap';
-// // import { Ionicons } from '@expo/vector-icons';
-
-// const MaintenanceScreen = ({ onOptionSelect }) => {
-//   return (
-//     <Container className="pt-4">
-//       {/* Header */}
-//       <h2 className="text-success mb-4">Maintenance</h2>
-
-//       {/* Maintenance Options */}
-//       <ListGroup variant="flush">
-//         <OptionButton
-//           iconName="calendar-outline"
-//           label="Scheduled Tasks"
-//           onPress={() => onOptionSelect('Scheduled Tasks')}
-//         />
-//         <OptionButton
-//           iconName="cog-outline"
-//           label="Equipment Check"
-//           onPress={() => onOptionSelect('Equipment Check')}
-//         />
-//         <OptionButton
-//           iconName="document-text-outline"
-//           label="Maintenance Logs"
-//           onPress={() => onOptionSelect('Maintenance Logs')}
-//         />
-//         <OptionButton
-//           iconName="bar-chart-outline"
-//           label="Reports"
-//           onPress={() => onOptionSelect('Reports')}
-//         />
-//         <OptionButton
-//           iconName="alert-circle-outline"
-//           label="Alerts"
-//           onPress={() => onOptionSelect('Alerts')}
-//         />
-//       </ListGroup>
-
-//       {/* Contact Support Button */}
-//       <Button
-//         variant="primary"
-//         className="mt-4 d-flex align-items-center"
-//         onClick={() => onOptionSelect('Contact Support')}
-//       >
-//         {/* <Ionicons name="help-circle-outline" size={24} color="white" /> */}
-//         <span className="ms-2">Contact Support</span>
-//       </Button>
-//     </Container>
-//   );
-// };
-
-// // Reusable OptionButton Component
-// const OptionButton = ({ iconName, label, onPress }) => (
-//   <ListGroup.Item action onClick={onPress} className="d-flex align-items-center">
-//     {/* <Ionicons name={iconName} size={24} color="#004D40" /> */}
-//     <span className="ms-3">{label}</span>
-//   </ListGroup.Item>
-// );
-
-// export default MaintenanceScreen;
-
-
 import React from 'react';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import { FaTools, FaWrench, FaHammer, FaCog, FaCheckCircle } from 'react-icons/fa';
@@ -78,8 +15,11 @@ const MaintenanceScreen = () => {
   return (
     <div className="maintenance-screen">
       <Container fluid>
+        <Card>
         <h3 className="text-center mb-4">System Maintenance Tasks</h3>
-        <Row>
+        </Card>
+        <br></br>
+         <Row>
           {maintenanceTasks.map(task => (
             <Col md={4} key={task.id}>
               <Card className="mb-4 shadow-sm maintenance-card">
@@ -88,7 +28,7 @@ const MaintenanceScreen = () => {
                     {task.icon}
                     <Card.Title className="ms-3">{task.title}</Card.Title>
                   </div>
-                  <Card.Text>
+                    <Card.Text>
                     {task.description}
                   </Card.Text>
                 </Card.Body>

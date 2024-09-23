@@ -1,70 +1,9 @@
-// import React from 'react';
-// import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-// import { BsChatDots, BsEnvelope, BsTelephone, BsQuestionCircle, BsStar } from 'react-icons/bs';
-
-// const SupportScreen = ({ onOptionSelect }) => {
-//   return (
-//     <Container fluid className="bg-light py-4">
-//       {/* Header Section */}
-//       <h1 className="text-primary mb-4">Support</h1>
-
-//       {/* Support Options */}
-//       <OptionButton
-//         icon={<BsChatDots />}
-//         label="Live Chat"
-//         onPress={() => onOptionSelect('Live Chat')}
-//       />
-//       <OptionButton
-//         icon={<BsEnvelope />}
-//         label="Email Support"
-//         onPress={() => onOptionSelect('Email Support')}
-//       />
-//       <OptionButton
-//         icon={<BsTelephone />}
-//         label="Phone Support"
-//         onPress={() => onOptionSelect('Phone Support')}
-//       />
-//       <OptionButton
-//         icon={<BsQuestionCircle />}
-//         label="FAQs"
-//         onPress={() => onOptionSelect('FAQs')}
-//       />
-
-//       {/* Feedback Button */}
-//       <Button
-//         variant="primary"
-//         className="d-flex align-items-center mt-4"
-//         onClick={() => onOptionSelect('Give Feedback')}
-//       >
-//         <BsStar className="me-2" />
-//         Give Feedback
-//       </Button>
-//     </Container>
-//   );
-// };
-
-// // Reusable OptionButton Component
-// const OptionButton = ({ icon, label, onPress }) => (
-//   <Card className="mb-3" onClick={onPress} style={{ cursor: 'pointer' }}>
-//     <Card.Body className="d-flex align-items-center">
-//       <span className="text-primary fs-4">{icon}</span>
-//       <h5 className="ms-3 mb-0 text-primary">{label}</h5>
-//     </Card.Body>
-//   </Card>
-// );
-
-// export default SupportScreen;
-
-
 import React, { useState } from 'react';
 import { Card, Row, Col, Container, Form, Button, Table } from 'react-bootstrap';
 import { FaQuestionCircle, FaTicketAlt, FaInbox, FaExclamationCircle } from 'react-icons/fa';
-// import './SupportScreen.css'; // Assuming you have a CSS file for custom styles
-
 const SupportScreen = () => {
   const [ticketType, setTicketType] = useState('Technical');
   const [description, setDescription] = useState('');
-
   const handleTicketTypeChange = (event) => {
     setTicketType(event.target.value);
   };
