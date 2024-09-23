@@ -101,47 +101,47 @@ export const Sidebar = () => {
             <h1 className="text-center mb-4">LOGO</h1>
             <ListGroup variant="flush">
               <ListGroup.Item action onClick={() => handleMenuClick('HomeScreen')} className="bg-dark text-white">
-                <FaHome size={24} className="me-2" />
+                <FaHome style={{ marginRight: '8px' }}size={24} className="me-2" />
                 Dashboard
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('RoyaltiesPaymentScreen')} className="bg-dark text-white">
-                <FaCreditCard size={24} className="me-2" />
+                <FaCreditCard style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Royalties
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('AnalyticsScreen')} className="bg-dark text-white">
-                <FaChartLine size={24} className="me-2" />
+                <FaChartLine style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Analytics
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('UserManagementScreen')} className="bg-dark text-white">
-                <FaUser size={24} className="me-2" />
-                User Management
+                <FaUser style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Users
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('SystemMonitoringScreen')} className="bg-dark text-white">
-                <FaChartLine size={24} className="me-2" />
-                System Monitoring
+                <FaChartLine style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Monitoring
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('MaintenanceScreen')} className="bg-dark text-white">
-                <FaWrench size={24} className="me-2" />
+                <FaWrench style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Maintenance
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('SecurityScreen')} className="bg-dark text-white">
-                <FaShieldAlt size={24} className="me-2" />
+                <FaShieldAlt style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Security
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('SettingsScreen')} className="bg-dark text-white">
-                <FaCog size={24} className="me-2" />
+                <FaCog  style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Settings
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('ReportsScreen')} className="bg-dark text-white">
-                <FaFileAlt size={24} className="me-2"/>
+                <FaFileAlt style={{ marginRight: '8px' }} size={24} className="me-2"/>
                 Reports
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('SupportScreen')} className="bg-dark text-white">
-                <FaQuestionCircle size={24} className="me-2" />
+                <FaQuestionCircle style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Support
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('Logout')} className="bg-dark text-white">
-                <FaSignOutAlt size={24} className="me-2" />
+                <FaSignOutAlt  style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Logout
               </ListGroup.Item>
             </ListGroup>

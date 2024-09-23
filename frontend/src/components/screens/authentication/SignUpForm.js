@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { create } from 'ipfs-http-client'; // Import IPFS client
-
-const ipfsClient = create({ url: 'https://ipfs.infura.io:5001/api/v0' }); // IPFS client configuration
 
 export default function SignUpForm() {
   const [step, setStep] = useState(1); // Controls form steps
@@ -66,19 +63,15 @@ export default function SignUpForm() {
     e.preventDefault();
     if (validateStep()) {
       try {
-        // Upload the form data to IPFS
-        const { path } = await ipfsClient.add(JSON.stringify(formData));
-        const ipfsHash = path; // Get IPFS CID
-
-        //Backend API to handle this request
-        const response = await fetch('https://localhost:5000/submit', {
+        // Submit the form data to the backend
+        const response = await fetch('http://localhost:5000/submit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ ipfsHash, ...formData })
+          body: JSON.stringify(formData) // Send formData as JSON
         });
-
+  
         if (response.ok) {
           console.log("Account created successfully");
         } else {
@@ -89,6 +82,7 @@ export default function SignUpForm() {
       }
     }
   };
+  
 
   // Progress bar percentage
   const progress = (step / 4) * 100;

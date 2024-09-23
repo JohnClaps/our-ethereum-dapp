@@ -9,6 +9,8 @@ import ReportsScreen from './ReportsScreen';
 import UserManagementScreen from './UserManagementScreen';
 import SecurityScreen from './SecurityScreen';
 import SettingsScreen from './SettingsScreen';
+import SupportScreen from './SupportScreen';
+import AnalyticsScreen from './AnalyticsScreen';
 
 const HomeScreen = () => {
   const [activeScreen, setActiveScreen] = useState('overview');
@@ -38,16 +40,20 @@ const HomeScreen = () => {
 
   const renderScreen = () => {
     switch (activeScreen) {
-      case 'royalties':
+      case 'RolyatiesPaymentScreen':
         return <RolyatiesPaymentScreen />;
-      case 'reports':
+      case 'AnalyticsScreen':
+        return <AnalyticsScreen/>;
+      case 'ReportsScreen':
         return <ReportsScreen />;
-      case 'user-management':
-        return <UserManagementScreen />;
-      case 'security':
+      case 'UserManagementScreen':
+        return <UserManagementScreen />
+      case 'SecurityScreen':
         return <SecurityScreen />;
-      case 'settings':
+      case 'SettingsScreen':
         return <SettingsScreen />;
+      case 'SupportScreen':
+        return <SupportScreen />;
       default:
         return (
           <Container fluid className="mt-4">
@@ -116,15 +122,19 @@ const HomeScreen = () => {
       {/* Navigation Bar */}
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#home">Mining Transactions Monitor</Navbar.Brand>
+          <Navbar.Brand onClick={() => setActiveScreen('overview')} style={{ cursor: 'pointer' }}>
+            Mining Transactions Monitor
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link onClick={() => setActiveScreen('RolyaltiesPaymentScreen')}>Royalties</Nav.Link>
-              <Nav.Link onClick={() => setActiveScreen('ReportsScreen')}>Reports</Nav.Link>
-              <Nav.Link onClick={() => setActiveScreen('UserManagementScreen')}>User Management</Nav.Link>
-              <Nav.Link onClick={() => setActiveScreen('SecurityScreen')}>Security</Nav.Link>
-              <Nav.Link onClick={() => setActiveScreen('SettingsScreen')}>Settings</Nav.Link>
+              <Nav.Link action onClick={() => setActiveScreen('RolyatiesPaymentScreen')}>Royalties</Nav.Link>
+              <Nav.Link action onClick={()=> setActiveScreen(AnalyticsScreen)}>Analytics</Nav.Link>
+              <Nav.Link action onClick={() => setActiveScreen('UserManagementScreen')}>Users</Nav.Link>
+              <Nav.Link action onClick={() => setActiveScreen('ReportsScreen')}>Reports</Nav.Link>
+              <Nav.Link action onClick={() => setActiveScreen('SecurityScreen')}>Security</Nav.Link>
+              <Nav.Link action onClick={() => setActiveScreen('SettingsScreen')}>Settings</Nav.Link>
+              <Nav.Link action onClick={() => setActiveScreen('SupportScreen')}>Support</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
