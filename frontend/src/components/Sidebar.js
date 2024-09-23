@@ -159,8 +159,8 @@ export const Sidebar = () => {
                <FaSignOutAlt size={24} className="me-2" />
                Logout
              </ListGroup.Item>
-
             {/* Additional Sidebar Items */}
+
           </ListGroup>
         </Col>
 
