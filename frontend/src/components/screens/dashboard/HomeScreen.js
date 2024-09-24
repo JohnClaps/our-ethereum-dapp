@@ -3,7 +3,7 @@ import { Line, Pie } from 'react-chartjs-2'; // Assuming you're using 'react-cha
 import React, { useState } from 'react';
 import './styles/HomeScreen.css';
 
-// Import actual screen components
+//Importing screen components
 import RolyatiesPaymentScreen from './RolyatiesPaymentScreen';
 import ReportsScreen from './ReportsScreen';
 import UserManagementScreen from './UserManagementScreen';
