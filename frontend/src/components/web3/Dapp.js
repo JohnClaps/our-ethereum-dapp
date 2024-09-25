@@ -5,15 +5,15 @@ import { ethers } from "ethers";
 
 // We import the contract's artifacts and address here, as we are going to be
 // using them with ethers
-import TokenArtifact from "../contracts/Token.json";
-import contractAddress from "../contracts/contract-address.json";
+import TokenArtifact from "../../contracts/Token.json";
+import contractAddress from "../../contracts/contract-address.json";
 
 // All the logic of this dapp is contained in the Dapp component.
 // These other components are just presentational ones: they don't have any
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
-import { ConnectWallet } from "./ConnectWallet";
-import { Sidebar } from "./screens/dashboard/site-admin/components/Sidebar";
+import { ConnectWallet } from "./LandingPage";
+import { Sidebar } from "../screens/dashboard/site-admin/components/Sidebar";
 import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";

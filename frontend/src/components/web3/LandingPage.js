@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { DropdownButton, Dropdown, Carousel, Modal, Button } from "react-bootstrap";
-import metamaskLogo from "./images/metamaskLogo.png";
-import excavatorIcon from "./images/excavatorIcon.png";
-import carouselImage2 from "./images/carouselImage2.jpg";
-import carouselImage3 from "./images/carouselImage3.jpg";
-import carouselImage1 from "./images/carouselImage1.jpg";
+import metamaskLogo from "../images/metamaskLogo.png";
+import excavatorIcon from "../images/excavatorIcon.png";
+import carouselImage2 from "../images/carouselImage2.jpg";
+import carouselImage3 from "../images/carouselImage3.jpg";
+import carouselImage1 from "../images/carouselImage1.jpg";
 import { NetworkErrorMessage } from "./NetworkErrorMessage";
-import SignUpForm from "./screens/authentication/SignUpForm";
+import SignUpForm from "../screens/authentication/SignUpForm";
 
 export function ConnectWallet({ connectWallet, networkError, dismiss }) {
   const [showSignUp, setShowSignUp] = useState(false);
