@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver'; // For exporting logs
 
 const ViewUpdateLogsScreen = () => {
   // Sample log data
-  const [logs, setLogs] = useState([
+  const [logs] = useState([
     { timestamp: '2024-09-20 10:30', description: 'Updated software to version 1.2.1', status: 'success' },
     { timestamp: '2024-09-18 14:12', description: 'Failed to update software', status: 'failure' },
     { timestamp: '2024-09-16 09:25', description: 'Updated configuration settings', status: 'success' },

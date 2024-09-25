@@ -73,11 +73,11 @@ const HomeScreen = () => {
               <Col md={6}>
                 <Card className="dashboard-card shadow-sm">
                   <Card.Body>
-                    <Card.Title>Transaction Volume (Monthly)</Card.Title>
                     <Line data={lineChartData} />
                   </Card.Body>
                 </Card>
               </Col>
+                    <Card.Title>Transaction Volume (Monthly)</Card.Title>
               <Col md={6}>
                 <Card className="dashboard-card shadow-sm">
                   <Card.Body>
@@ -129,7 +129,7 @@ const HomeScreen = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link action onClick={() => setActiveScreen('RolyatiesPaymentScreen')}>Royalties</Nav.Link>
-              <Nav.Link action onClick={()=> setActiveScreen(AnalyticsScreen)}>Analytics</Nav.Link>
+              <Nav.Link action onClick={()=> setActiveScreen('AnalyticsScreen')}>Analytics</Nav.Link>
               <Nav.Link action onClick={() => setActiveScreen('UserManagementScreen')}>Users</Nav.Link>
               <Nav.Link action onClick={() => setActiveScreen('ReportsScreen')}>Reports</Nav.Link>
               <Nav.Link action onClick={() => setActiveScreen('SecurityScreen')}>Security</Nav.Link>
@@ -149,3 +149,4 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+

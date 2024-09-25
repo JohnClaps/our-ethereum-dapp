@@ -1,15 +1,15 @@
   import React, { useState } from 'react';
   import { Card, Container, Nav, Button, ListGroup } from 'react-bootstrap';
-  import { FaTools, FaWrench, FaHammer, FaCog, FaCheckCircle, FaFileAlt, FaDatabase, FaDesktop, FaMarker } from 'react-icons/fa';
+  import { FaTools, FaWrench, FaHammer, FaCog, FaCheckCircle, FaDatabase} from 'react-icons/fa';
   import './styles/MaintenanceScreen.css';
-  import DiagnosticsScreen from './minor-dashes/DiagnosticsScreen';
-  import SoftwareUpdateScreen from './minor-dashes/SoftwareUpdatesScreen';
-  import HardwareInspectionScreen from './minor-dashes/HardwareInspectionScreen';
-  import SystemHealthCheckScreen from './minor-dashes/SystemHealthCheckScreen';
-  import ConfigurationManagementScreen from './minor-dashes/ConfigurationManagementScreen';
-  import OffchainBackupScreen from './minor-dashes/OffchainBackupScreen';
-  import ViewUpdateLogsScreen from './minor-dashes/ViewUpdateLogsScreen';
-  import ApplyPatchesScreen from './minor-dashes/ApplyPatchesScreen';
+  import DiagnosticsScreen from '../minor-dashes/DiagnosticsScreen';
+  import SoftwareUpdateScreen from '../minor-dashes/SoftwareUpdatesScreen';
+  import HardwareInspectionScreen from '../minor-dashes/HardwareInspectionScreen';
+  import SystemHealthCheckScreen from '../minor-dashes/SystemHealthCheckScreen';
+  import ConfigurationManagementScreen from '../minor-dashes/ConfigurationManagementScreen';
+  import OffchainBackupScreen from '../minor-dashes/OffchainBackupScreen';
+  import ViewUpdateLogsScreen from '../minor-dashes/ViewUpdateLogsScreen';
+  import ApplyPatchesScreen from '../minor-dashes/ApplyPatchesScreen';
 
   const MaintenanceScreen = () => {
     const [selectedTask, setSelectedTask] = useState(null);
@@ -40,7 +40,7 @@
       },
       { 
         id: 3, 
-        title: 'Hardware Inspection', 
+        title: 'Hardware', 
         description: 'Inspect and maintain hardware components for optimal performance.', 
         icon: <FaHammer size={20} />, 
         actions: [
@@ -51,7 +51,7 @@
       },
       { 
         id: 4, 
-        title: 'Configuration Management', 
+        title: 'Configuration', 
         description: 'Manage and update system configurations as needed.', 
         icon: <FaCog size={20} />, 
         actions: [
@@ -64,7 +64,7 @@
         id: 5, 
         description: 'Run health checks and ensure all systems are operating correctly.', 
         icon: <FaCheckCircle size={20} />, 
-        title: 'System Health Check', 
+        title: 'Health', 
         actions: [
           { title: 'Run health check', action: () => setActiveScreen('systemHealthCheck') },
           { title: 'View system status' },
@@ -73,7 +73,7 @@
       },
       { 
         id: 6, 
-        title: 'Offchain Backup', 
+        title: 'Backup', 
         description: 'Perform periodic backup of data in case of severe system failure.', 
         icon: <FaDatabase size={20} />, 
         actions: [
