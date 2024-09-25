@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Container, Form, Button, Nav } from 'react-bootstrap';
 import { FaUser, FaBell, FaLanguage,FaPaintBrush } from 'react-icons/fa';
-import './styles/SettingsScreen.css';
+import '../styles/SettingsScreen.css';
 
 const SettingsScreen = () => {
   const [activeSetting, setActiveSetting] = useState('account');

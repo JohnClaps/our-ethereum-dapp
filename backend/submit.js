@@ -4,9 +4,9 @@ const url = require('url');
 
 const client = new Client({
   host: 'localhost',
-  user: 'your_user', // replace with your PostgreSQL user
-  password: 'your_password', // replace with your PostgreSQL password
-  database: 'your_database', // replace with your PostgreSQL database
+  user: 'postgres', // replace with your PostgreSQL user
+  password: 'db-pswd24@mw', // replace with your PostgreSQL password
+  database: 'postgres', // replace with your PostgreSQL database
   port: 5432,
 });
 

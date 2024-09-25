@@ -1,15 +1,15 @@
 import { Navbar, Nav, Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Line, Pie } from 'react-chartjs-2'; // Assuming you're using 'react-chartjs-2' for charts
 import React, { useState } from 'react';
-import './styles/HomeScreen.css';
+import '../styles/HomeScreen.css';
 
 //Importing screen components
-import RolyatiesPaymentScreen from './components/RolyatiesPaymentScreen';
-import ReportsScreen from './components/ReportsScreen';
+import RolyatiesPaymentScreen from './RolyatiesPaymentScreen';
+import ReportsScreen from './ReportsScreen';
 import UserManagementScreen from './UserManagementScreen';
-import SecurityScreen from './components/SecurityScreen';
-import SettingsScreen from './components/SettingsScreen';
-import SupportScreen from './components/SupportScreen';
+import SecurityScreen from './SecurityScreen';
+import SettingsScreen from './SettingsScreen';
+import SupportScreen from './SupportScreen';
 import AnalyticsScreen from './AnalyticsScreen';
 
 const HomeScreen = () => {

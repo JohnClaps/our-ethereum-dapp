@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Container, Table, Nav, Pagination } from 'react-bootstrap';
 import { FaShieldAlt, FaHistory, FaUser, FaExclamationTriangle } from 'react-icons/fa';
-import './styles/SecurityScreen.css';
+import '../styles/SecurityScreen.css';
 
 const SecurityScreen = () => {
   const [activeTab, setActiveTab] = useState('userLog'); // State to control active tab

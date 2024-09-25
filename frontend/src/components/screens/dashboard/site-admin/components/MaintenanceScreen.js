@@ -1,7 +1,7 @@
   import React, { useState } from 'react';
   import { Card, Container, Nav, Button, ListGroup } from 'react-bootstrap';
   import { FaTools, FaWrench, FaHammer, FaCog, FaCheckCircle, FaDatabase} from 'react-icons/fa';
-  import './styles/MaintenanceScreen.css';
+  import '../styles/MaintenanceScreen.css';
   import DiagnosticsScreen from '../minor-dashes/DiagnosticsScreen';
   import SoftwareUpdateScreen from '../minor-dashes/SoftwareUpdatesScreen';
   import HardwareInspectionScreen from '../minor-dashes/HardwareInspectionScreen';

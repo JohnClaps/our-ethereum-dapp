@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Row, Col, Form, FormControl, Button, Card } from 'react-bootstrap';
 import { FaHome, FaUser, FaChartLine, FaWrench, FaShieldAlt, FaCog, FaFileAlt, FaQuestionCircle, FaSignOutAlt, FaBell, FaSearch, FaCreditCard, FaLink } from 'react-icons/fa';
-import profile from './images/profile.jpg';
-import HomeScreen from './screens/dashboard/HomeScreen';
-import ReportsScreen from "./screens/dashboard/ReportsScreen";
-import MaintenanceScreen from './screens/dashboard/MaintenanceScreen';
-import SettingsScreen from './screens/dashboard/SettingsScreen';
-import SecurityScreen from './screens/dashboard/SecurityScreen';
-import SupportScreen from './screens/dashboard/SupportScreen';
-import UserManagementScreen from './screens/dashboard/UserManagementScreen';
-import SystemMonitoringScreen from "./screens/dashboard/SystemMonitoringScreen";
-import RoyaltiesPaymentScreen from './screens/dashboard/RolyatiesPaymentScreen';
-import AnalyticsScreen from "./screens/dashboard/AnalyticsScreen";
-import './screens/dashboard/styles/Sidebar.css'; // Custom styling
+import profile from '../assets/profile.jpg';
+import HomeScreen from './HomeScreen';
+import ReportsScreen from "./ReportsScreen";
+import MaintenanceScreen from './MaintenanceScreen';
+import SettingsScreen from './SettingsScreen';
+import SecurityScreen from './SecurityScreen';
+import SupportScreen from './SupportScreen';
+import UserManagementScreen from './UserManagementScreen';
+import SystemMonitoringScreen from "./SystemMonitoringScreen";
+import RoyaltiesPaymentScreen from './RolyatiesPaymentScreen';
+import AnalyticsScreen from "./AnalyticsScreen";
+import '../styles/Sidebar.css'; // Custom styling
 
 export const Sidebar = () => {
   const [content, setContent] = useState('HomeScreen');
@@ -136,9 +136,9 @@ export const Sidebar = () => {
                 <FaFileAlt style={{ marginRight: '8px' }} size={24} className="me-2"/>
                 Reports
               </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('SupportScreen')} className="bg-dark text-white">
                 <FaQuestionCircle style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Support
+              <ListGroup.Item action onClick={() => handleMenuClick('SupportScreen')} className="bg-dark text-white">
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('Logout')} className="bg-dark text-white">
                 <FaSignOutAlt  style={{ marginRight: '8px' }} size={24} className="me-2" />
