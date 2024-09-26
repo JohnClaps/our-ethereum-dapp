@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import './backend/server.js';
 
 export default function SignUpForm() {
   const [step, setStep] = useState(1); // Controls form steps
