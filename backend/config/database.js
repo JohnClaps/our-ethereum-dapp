@@ -9,7 +9,7 @@ const pool = new Pool({
     database : 'postgres'
 });
 
-const createTblQry = 'CREATE TABLE login (firstName VARCHAR (45) ;lastName VARCHAR (50);)';
+const createTblQry = 'CREATE TABLE accounts (user_id SERIAL PRIMARY KEY, username VARCHAR (50) UNIQUE NOT NULL,password VARCHAR (50) UNIQUE NOT NULL);';
 
 pool 
     .query(createTblQry)

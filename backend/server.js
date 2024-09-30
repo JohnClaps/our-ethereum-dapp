@@ -1,15 +1,15 @@
-const express =  require ("express");
-const cors = require("cors");
+import express from "express"
+import cors from "cors"
 
-const server = express ();
+const app = express()
 
-server.use(express.json());
-server.use(cors());
+app.use(json())
+app.use(cors())
 
-server.get("\adduser",(req,res) => {
-  console.log(req.body);
+
+app.get("/adduser",(req,res) => {
+  console.log(req.body)
   res.send("Response received"+req.body);
 });
 
-server.listen(4000,()=>console.log("Server is running on localhost:4000"));
-
+app.listen(4000,()=>console.log("Server on localhost:4000"));
