@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, ProgressBar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import './backend/server.js';
 
 export default function SignUpForm() {
   const [step, setStep] = useState(1); // Controls form steps
@@ -65,7 +64,7 @@ export default function SignUpForm() {
     if (validateStep()) {
       try {
         // Submit the form data to the backend
-        const response = await fetch('http://localhost:5000/submit', {
+        const response = await fetch('http://localhost:4000/adduser', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -138,7 +137,6 @@ export default function SignUpForm() {
               <Form.Group controlId="formPhoneNumber">
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control
-                  type="text"
                   placeholder="Enter your phone number"
                   name="phoneNumber"
                   value={formData.phoneNumber}
