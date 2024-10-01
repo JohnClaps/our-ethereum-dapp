@@ -1,99 +1,36 @@
-/* Sidebar.css */
-
 .sidebar-container {
-    display: flex;
-    height: 100vh;
-  }
+  overflow: hidden;
+  height: 100vh;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050; /* Ensure the header stays on top */
+  background-color: #f8f9fa; /* Light background for contrast */
   
-  .fixed-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #343a40;
-    z-index: 1000;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .fixed-header form {
-    display: flex;
-    align-items: center;
-  }
-  
-  .fixed-header img {
-    border-radius: 50%;
-  }
-  
-  .sidebar {
-    background-color: #343a40;
-    color: white;
-    height: 100%;
-    padding: 20px;
-    transition: all 0.3s ease;
-    position: fixed;
-    top: 60px; /* Below the fixed header */
-    left: 0;
-    width: 200px;
-  }
-  
-  .sidebar h1 {
-    color: white;
-  }
-  
-  .sidebar .list-group-item {
-    background-color: #343a40;
-    border: none;
-    padding: 15px;
-    font-size: 18px;
-  }
-  
-  .sidebar .list-group-item:hover,
-  .sidebar .list-group-item.active {
-    background-color: #495057;
-  }
-  
-  .sidebar.scrolled {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .content-area {
-    margin-left: 200px;
-    padding: 20px;
-    margin-top: 60px; /* To adjust for the header */
-    flex: 1;
-  }
-  
-  .quick-links {
-    background-color: #6c757d;
-    color: white;
-    padding: 20px;
-    height: 100vh;
-    overflow-y: auto;
-    position: fixed;
-    right: 0;
-    top: 60px; /* Below the fixed header */
-    width: 200px;
-  }
-  
-  .quick-links h4 {
-    color: white;
-  }
-  
-  .quick-links .list-group-item {
-    background-color: #6c757d;
-    border: none;
-    padding: 10px;
-  }
-  
-  .quick-links .list-group-item:hover,
-  .quick-links .list-group-item.active {
-    background-color: #495057;
-  }
-  
-  .quick-links .card {
-    background-color: #f8f9fa;
-  }
-  
-  
+}
+.sidebar {
+
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #343a40; /* Dark background */
+  z-index: 1000; /* Ensure it's below the header */
+}
+
+.content-area {
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-top: 56px; /* Adjust for fixed header height */
+}
+
+.quick-links {
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #6c757d; /* Slightly lighter background */
+  z-index: 1000; /* Ensure it's below the header */
+  position: sticky;
+  top: 0;
+}

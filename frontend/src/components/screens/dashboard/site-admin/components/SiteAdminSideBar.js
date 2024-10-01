@@ -72,7 +72,7 @@ export const Sidebar = () => {
     { id: 2, title: 'System Status', content: 'Check the current status of all mining systems and operations.' },
     { id: 3, title: 'User Activity', content: 'Monitor user activities and manage permissions efficiently.' },
     { id: 4, title: 'Maintenance Logs', content: 'Review all maintenance activities and logs for troubleshooting.' },
-    { id: 5, title: 'Security Alerts', content: 'View the latest security alerts and take necessary actions.View the latest security alerts and take necessary actions.View the latest security alerts and take necessary actions.View the latest security alerts and take necessary actions.View the latest security alerts and take necessary actions.View the latest security alerts and take necessary actions.View the latest security alerts and take necessary actions.' }
+    { id: 5, title: 'Security Alerts', content: 'View the latest security alerts and take necessary actions.' }
   ];
 
   return (
@@ -101,7 +101,7 @@ export const Sidebar = () => {
             <h1 className="text-center mb-4">LOGO</h1>
             <ListGroup variant="flush">
               <ListGroup.Item action onClick={() => handleMenuClick('HomeScreen')} className="bg-dark text-white">
-                <FaHome style={{ marginRight: '8px' }}size={24} className="me-2" />
+                <FaHome style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Dashboard
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('RoyaltiesPaymentScreen')} className="bg-dark text-white">
@@ -129,19 +129,19 @@ export const Sidebar = () => {
                 Security
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('SettingsScreen')} className="bg-dark text-white">
-                <FaCog  style={{ marginRight: '8px' }} size={24} className="me-2" />
+                <FaCog style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Settings
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('ReportsScreen')} className="bg-dark text-white">
-                <FaFileAlt style={{ marginRight: '8px' }} size={24} className="me-2"/>
+                <FaFileAlt style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Reports
               </ListGroup.Item>
+              <ListGroup.Item action onClick={() => handleMenuClick('SupportScreen')} className="bg-dark text-white">
                 <FaQuestionCircle style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Support
-              <ListGroup.Item action onClick={() => handleMenuClick('SupportScreen')} className="bg-dark text-white">
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('Logout')} className="bg-dark text-white">
-                <FaSignOutAlt  style={{ marginRight: '8px' }} size={24} className="me-2" />
+                <FaSignOutAlt style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Logout
               </ListGroup.Item>
             </ListGroup>
@@ -187,4 +187,5 @@ export const Sidebar = () => {
     </div>
   );
 };
+
 export default Sidebar;

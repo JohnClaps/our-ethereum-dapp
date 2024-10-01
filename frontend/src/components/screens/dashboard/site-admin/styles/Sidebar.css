@@ -34,3 +34,7 @@
   position: sticky;
   top: 0;
 }
+.fixed-header h2 {
+  text-align: center;
+  margin-bottom: 0.5rem; /* Adjust the margin as needed */
+}

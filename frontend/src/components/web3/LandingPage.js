@@ -161,8 +161,8 @@ export function ConnectWallet({ connectWallet, networkError, dismiss }) {
        {/* Sign Up Modal */}
       <Modal show={showSignUp} onHide={handleCloseSignUp} centered>
          <Modal.Header closeButton>
-           <Modal.Title>Sign Up</Modal.Title>
          </Modal.Header>
+           <Modal.Title>Sign Up</Modal.Title>
          <Modal.Body>
            <SignUpForm />
          </Modal.Body>
