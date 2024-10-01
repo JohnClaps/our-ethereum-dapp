@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Row, Col, Form, FormControl, Button, Card } from 'react-bootstrap';
 import { FaHome, FaUser, FaChartLine, FaWrench, FaSignOutAlt, FaBell, FaSearch, FaCreditCard, FaLink } from 'react-icons/fa';
 import EnvironmentalCompliance from './EnvironmentalCompliance';
-import profile from './images/profile.jpg';
-import './screens/dashboard/styles/Sidebar.css'; // Custom styling
+import profile from './assets/profile.jpg';
+import './styles/Sidebar.css'; // Custom styling
 import EquipmentPerformance from './EquipmentPerformance';
 import EquipmentUsageReport from './EquipmentUsageReport,js';
 import LicensePermits from './LicensePermits';
@@ -13,6 +13,7 @@ import ProductionReport from './ProductionReport';
 import SafetyInspection from './SafetyInspection';
 import ScheduleMaintenance from './ScheduleMaintenance';
 import SupervisorCommunication from './SupervisorCommunication';
+import AuthenticationScreen from '../govt-dashboard/AuthenticationScreen';
 
 export const Sidebar = () => {
   const [content, setContent] = useState('HomeScreen');
@@ -40,11 +41,11 @@ export const Sidebar = () => {
         return <MineralInventory/>;
       case 'ProductionReport':
         return <ProductionReport/>;
-      case 'SafetyInspection':
         return <SafetyInspection/>;
       case 'ScheduleMaintenance':
         return <ScheduleMaintenance/>;
-      case 'SupervisorCommunication':
+        case 'SupervisorCommunication':
+        case 'SafetyInspection':
         return <SupervisorCommunication/>;    
       default:
         return <AuthenticationScreen />;

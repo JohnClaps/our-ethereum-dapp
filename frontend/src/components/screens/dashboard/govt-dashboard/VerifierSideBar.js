@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Row, Col, Form, FormControl, Button, Card } from 'react-bootstrap';
 import { FaHome, FaUser, FaChartLine, FaWrench, FaSignOutAlt, FaBell, FaSearch, FaCreditCard, FaLink } from 'react-icons/fa';
-import profile from './images/profile.jpg';
-import './screens/dashboard/styles/Sidebar.css'; // Custom styling
+import profile from "./assets/profile.jpeg";
+import './styles/Sidebar.css'; // Custom styling
 import AuthenticationScreen from './AuthenticationScreen';
 import ExportProcessMonitoringScreen from './ExportProcessMonitoringScreen';
 import MineralSalesAuditScreen from './MineralSalesAuditScreen';
 import ProductionDataVerificationScreen from './ProductionDataVerificationScreen';
 import RoyaltiesPaymentVerificationScreen from './RoyaltiesPaymentVerificationScreen';
-import RoyaltiesPaymentVerificationScreen from './RoyaltiesPaymentVerificationScreen';
 
-export const Sidebar = () => {
+export const SideBar = () => {
   const [content, setContent] = useState('HomeScreen');
   const [activeQuickLink, setActiveQuickLink] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,7 +22,7 @@ export const Sidebar = () => {
   const renderContent = () => {
     switch (content) {
       case 'AuthenticationScreen':
-        return <AuthenticationScreenScreen/>;
+        return <AuthenticationScreen/>;
       case 'RoyaltiesPaymentVerificationScreen':
         return <RoyaltiesPaymentVerificationScreen/>;
       case 'ExportProcessMonitoringScreen':
@@ -84,11 +83,11 @@ export const Sidebar = () => {
         <Row className="flex-nowrap">
           {/* Sidebar */}
           <Col xs={2} className={`sidebar ${isScrolled ? 'scrolled' : ''}`}>
+                Aunthentication
             <h1 className="text-center mb-4">LOGO</h1>
             <ListGroup variant="flush">
               <ListGroup.Item action onClick={() => handleMenuClick('AuthenticationScreen')} className="bg-dark text-white">
                 <FaHome style={{ marginRight: '8px' }}size={24} className="me-2" />
-                Aunthentication
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('RoyaltiesPaymentVerificationScreen')} className="bg-dark text-white">
                 <FaCreditCard style={{ marginRight: '8px' }} size={24} className="me-2" />
@@ -103,9 +102,9 @@ export const Sidebar = () => {
                 Sales
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('ProductionDataVerificationScreen')} className="bg-dark text-white">
+              </ListGroup.Item>
                 <FaWrench style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Production
-              </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('Logout')} className="bg-dark text-white">
                 <FaSignOutAlt  style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Logout
@@ -153,4 +152,4 @@ export const Sidebar = () => {
     </div>
   );
 };
-export default Sidebar;
+export default SideBar;
