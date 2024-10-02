@@ -13,7 +13,7 @@ import ProductionReport from './ProductionReport';
 import SafetyInspection from './SafetyInspection';
 import ScheduleMaintenance from './ScheduleMaintenance';
 import SupervisorCommunication from './SupervisorCommunication';
-import AuthenticationScreen from '../govt-dashboard/AuthenticationScreen';
+import AuthenticationScreen from '../verifier/AuthenticationScreen';
 
 export const Sidebar = () => {
   const [content, setContent] = useState('HomeScreen');
