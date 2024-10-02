@@ -40,13 +40,13 @@ const sendOTP = async (email, otp) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail', // Or any other email service
         auth: {
-            user: 'your-email@gmail.com',
-            pass: 'your-email-password'
+            user: 'johnclaps3@gmail.com',
+            pass: 'google@ict_a/c-$'
         }
     });
 
     const mailOptions = {
-        from: 'your-email@gmail.com',
+        from: 'johnclaps3@gmail.com',
         to: email,
         subject: 'Your OTP Code',
         text: `Your OTP code is ${otp}`
