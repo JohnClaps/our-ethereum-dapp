@@ -7,9 +7,9 @@ import carouselImage3 from "../images/carouselImage3.jpg";
 import carouselImage1 from "../images/carouselImage1.jpg";
 import { NetworkErrorMessage } from "./NetworkErrorMessage";
 import SignUpForm from "../screens/authentication/SignUpForm";
-import VerifierSideBar from "../screens/dashboard/verifier/VerifierSideBar";
+import VerifierSideBar from "../screens/dashboard/verifier/components/VerifierSideBar";
 import SiteAmdinSidebar from "../screens/dashboard/site-admin/components/SiteAdminSideBar";
-import SiteUserSideBar from "../screens/dashboard/site-users-dashboard/SiteUserSideBar";
+import SiteUserSideBar from "../screens/dashboard/site-users-dashboard/components/SiteUserSideBar";
 import axios from "axios";
 
 export function ConnectWallet({ connectWallet, networkError, dismiss }) {

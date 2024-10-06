@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Row, Col, Form, FormControl, Button, Card } from 'react-bootstrap';
-import { FaHome, FaUser, FaChartLine, FaWrench, FaSignOutAlt, FaBell, FaSearch, FaCreditCard, FaLink } from 'react-icons/fa';
-import profile from "./assets/profile.jpeg";
-import './styles/Sidebar.css'; // Custom styling
-import AuthenticationScreen from './AuthenticationScreen';
-import ExportProcessMonitoringScreen from './ExportProcessMonitoringScreen';
-import MineralSalesAuditScreen from './MineralSalesAuditScreen';
-import ProductionDataVerificationScreen from './ProductionDataVerificationScreen';
-import RoyaltiesPaymentVerificationScreen from './RoyaltiesPaymentVerificationScreen';
-
-export const SideBar = () => {
+import { FaHome, FaUser, FaChartLine, FaWrench, FaSignOutAlt, FaBell, FaSearch, FaLink, FaBalanceScale, FaDesktop, FaHammer, FaReceipt, FaBookOpen, FaLock, FaObjectGroup, FaUsers } from 'react-icons/fa';
+import EnvironmentalCompliance from './EnvironmentalCompliance';
+import profile from '../assets/profile.jpg';
+import '../styles/Sidebar.css'; // Custom styling
+import EquipmentPerformance from '../components/EquipmentPerformance';
+import EquipmentUsageReport from '../components/EquipmentUsageReport.js';
+import LicensePermits from '../components/LicensePermits';
+import LogMineralExtraction from '../components/LogMineralExtraction';
+import MineralInventory from '../components/MineralInventory';
+import ProductionReport from '../components/ProductionReport';
+import SafetyInspection from '../components/SafetyInspection.js';
+import ScheduleMaintenance from '../components/ScheduleMaintenance.js';
+import SupervisorCommunication from '../components/SupervisorCommunication';
+import SiteUserHomeScreen from '../components/SiteUserHomeScreen';
+export const Sidebar = () => {
   const [content, setContent] = useState('HomeScreen');
   const [activeQuickLink, setActiveQuickLink] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,18 +26,30 @@ export const SideBar = () => {
 
   const renderContent = () => {
     switch (content) {
-      case 'AuthenticationScreen':
-        return <AuthenticationScreen/>;
-      case 'RoyaltiesPaymentVerificationScreen':
-        return <RoyaltiesPaymentVerificationScreen/>;
-      case 'ExportProcessMonitoringScreen':
-        return <ExportProcessMonitoringScreen />;
-      case 'MineralSalesAuditScreen':
-        return <MineralSalesAuditScreen />;
-      case 'ProductionDataVerificationScreen':
-        return <ProductionDataVerificationScreen />;
+      case 'SiteUserHomeScreen':
+        return <SiteUserHomeScreen/>;
+      case 'EnvironmentalCompliance':
+        return <EnvironmentalCompliance/>;
+      case 'EquipmentPerformance':
+        return <EquipmentPerformance/>;
+      case 'EquipmentUsageReport':
+        return <EquipmentUsageReport />;
+      case 'LicensePermits':
+        return <LicensePermits />;
+      case 'LogMineralExtraction':
+        return <LogMineralExtraction />;
+      case 'MineralInventory':
+        return <MineralInventory/>;
+      case 'ProductionReport':
+        return <ProductionReport/>;
+        return <SafetyInspection/>;
+      case 'ScheduleMaintenance':
+        return <ScheduleMaintenance/>;
+        case 'SupervisorCommunication':
+        case 'SafetyInspection':
+        return <SupervisorCommunication/>;    
       default:
-        return <AuthenticationScreen />;
+        return <SiteUserHomeScreen />;
     }
   };
 
@@ -83,28 +100,48 @@ export const SideBar = () => {
         <Row className="flex-nowrap">
           {/* Sidebar */}
           <Col xs={2} className={`sidebar ${isScrolled ? 'scrolled' : ''}`}>
-                Aunthentication
             <h1 className="text-center mb-4">LOGO</h1>
             <ListGroup variant="flush">
-              <ListGroup.Item action onClick={() => handleMenuClick('AuthenticationScreen')} className="bg-dark text-white">
+            <ListGroup.Item action onClick={() => handleMenuClick('SiteUserHomeScreen')} className="bg-dark text-white">
                 <FaHome style={{ marginRight: '8px' }}size={24} className="me-2" />
+                Home
               </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('RoyaltiesPaymentVerificationScreen')} className="bg-dark text-white">
-                <FaCreditCard style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Royalties
+              <ListGroup.Item action onClick={() => handleMenuClick('EnvironmentalCompliance')} className="bg-dark text-white">
+                <FaBalanceScale style={{ marginRight: '8px' }}size={24} className="me-2" />
+                Compliance
               </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('ExportProcessMonitoringScreen')} className="bg-dark text-white">
+              <ListGroup.Item action onClick={() => handleMenuClick('EquipmentPerformance')} className="bg-dark text-white">
+                <FaDesktop style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Hardware
+              </ListGroup.Item>
+              <ListGroup.Item action onClick={() => handleMenuClick('EquipmentUsageReport')} className="bg-dark text-white">
                 <FaChartLine style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Exports
+                Usage
               </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('MineralSalesAuditScreen')} className="bg-dark text-white">
+              <ListGroup.Item action onClick={() => handleMenuClick('LicensePermits')} className="bg-dark text-white">
                 <FaUser style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Sales
+                Permits
               </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('ProductionDataVerificationScreen')} className="bg-dark text-white">
+              <ListGroup.Item action onClick={() => handleMenuClick('LogMineralExtraction')} className="bg-dark text-white">
+                <FaHammer style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Extraction
               </ListGroup.Item>
+              <ListGroup.Item action onClick={() => handleMenuClick('MineralInventory')} className="bg-dark text-white">
+                <FaReceipt style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Inventory
+              </ListGroup.Item>              <ListGroup.Item action onClick={() => handleMenuClick('ProductionReport')} className="bg-dark text-white">
+                <FaBookOpen style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Reports
+              </ListGroup.Item>              <ListGroup.Item action onClick={() => handleMenuClick('SafetyInspection')} className="bg-dark text-white">
+                <FaLock style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Safety
+              </ListGroup.Item>              <ListGroup.Item action onClick={() => handleMenuClick('ScheduleMaintenance')} className="bg-dark text-white">
                 <FaWrench style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Production
+                Maintenance
+              </ListGroup.Item>              <ListGroup.Item action onClick={() => handleMenuClick('SupervisorCommunication')} className="bg-dark text-white">
+                <FaUsers  style={{ marginRight: '8px' }} size={24} className="me-2" />
+                Collaboration
+              </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('Logout')} className="bg-dark text-white">
                 <FaSignOutAlt  style={{ marginRight: '8px' }} size={24} className="me-2" />
                 Logout
@@ -152,4 +189,4 @@ export const SideBar = () => {
     </div>
   );
 };
-export default SideBar;
+export default Sidebar;

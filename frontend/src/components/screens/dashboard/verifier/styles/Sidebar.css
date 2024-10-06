@@ -1,113 +1,36 @@
-/* Sidebar Styles */
 .sidebar-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #f8f9fa;
-  }
+  overflow: hidden;
+  height: 100vh;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050; /* Ensure the header stays on top */
+  background-color: #f8f9fa; /* Light background for contrast */
   
-  .fixed-header {
-    background-color: #343a40;
-    padding: 10px;
-    color: white;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 60px;
-    z-index: 1000;
-    width: 100%;
-  }
-  
-  .fixed-header .form-inline {
-    display: flex;
-    align-items: center;
-  }
-  
-  .sidebar {
-    background-color: #343a40;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  
-  .sidebar.scrolled {
-    position: fixed;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .sidebar h1 {
-    color: white;
-    font-size: 24px;
-    margin-bottom: 40px;
-  }
-  
-  .sidebar .list-group-item {
-    border: none;
-    background-color: #343a40;
-    color: white;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-  }
-  
-  .sidebar .list-group-item:hover {
-    background-color: #495057;
-    cursor: pointer;
-  }
-  
-  .sidebar .list-group-item .me-2 {
-    margin-right: 10px;
-  }
-  
-  .content-area {
-    background-color: #ffffff;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  
-  .quick-links {
-    background-color: #343a40;
-    padding: 20px;
-    min-height: 100vh;
-    color: white;
-  }
-  
-  .quick-links h4 {
-    font-size: 18px;
-    color: white;
-  }
-  
-  .quick-links .list-group-item {
-    border: none;
-    background-color: #495057;
-    color: white;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-  }
-  
-  .quick-links .list-group-item:hover {
-    background-color: #6c757d;
-    cursor: pointer;
-  }
-  
-  .quick-links .card {
-    background-color: #ffffff;
-    color: black;
-  }
-  
-  .quick-links .card-body {
-    padding: 15px;
-  }
-  
-  .quick-links .card-title {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .quick-links .card-text {
-    font-size: 14px;
-  }
-  
+}
+.sidebar {
+
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #343a40; /* Dark background */
+  z-index: 1000; /* Ensure it's below the header */
+}
+
+.content-area {
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-top: 56px; /* Adjust for fixed header height */
+}
+
+.quick-links {
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #6c757d; /* Slightly lighter background */
+  z-index: 1000; /* Ensure it's below the header */
+  position: sticky;
+  top: 0;
+}
