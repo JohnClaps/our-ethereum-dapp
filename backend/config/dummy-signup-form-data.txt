@@ -1,4 +1,0 @@
-username = johnclaps
-Metamask ID = 0xf39Fd4e51aad87F6F4ce6aB8827279cffFb72266
-Phone # = 0997484429
-Licence # = A9B7C3

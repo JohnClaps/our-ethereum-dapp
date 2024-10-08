@@ -13,9 +13,7 @@ import contractAddress from "../../contracts/contract-address.json";
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
 import { ConnectWallet } from "./LandingPage";
-// import SiteAdminSidebar from "../screens/dashboard/site-admin/components/SiteAdminSideBar";
-// import VerifierSideBar from "../screens/dashboard/verifier/components/VerifierSideBar"
-import SiteUserSideBar from '../screens/dashboard/site-users-dashboard/components/SiteUserSideBar';
+import SiteAdminSideBar from "../screens/dashboard/site-admin/components/SiteAdminSideBar";
 import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
@@ -84,7 +82,7 @@ export class Dapp extends React.Component {
     // If the token data or the user's balance hasn't loaded yet, we show
     // a loading component.
     if (!this.state.tokenData || !this.state.balance) {
-      return <SiteUserSideBar />;
+      return <SiteAdminSideBar />;
     }
 
     // If everything is loaded, we render the application.
