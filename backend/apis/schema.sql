@@ -3,9 +3,11 @@
 /*Users Table*/
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    ethereum_address VARCHAR(42) UNIQUE NOT NULL,
     username VARCHAR(100),
+    wallet_id VARCHAR(42) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE,
+    phone_number INT(10),
+    pass_word VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

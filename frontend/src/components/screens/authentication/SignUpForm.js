@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import { Form, Button, Container, Row, Col, ProgressBar } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
+import axios from "axios"; // Import Axios
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SignUpForm() {
-  const [step, setStep] = useState(1); // Controls form steps
   const [formData, setFormData] = useState({
     username: "",
-    metamaskId: "",
+    walletId: "",
+    email: "",
     phoneNumber: "",
-    licenseNumber: ""
+    password: "",
+    confirmPassword: ""
   });
-
-  const [errors, setErrors] = useState({}); // Store validation errors
-
-  // Regular expressions for validation
-  const usernameRegex = /^[a-zA-Z0-9]{3,}$/;
-  const metamaskIdRegex = /^0x[a-fA-F0-9]{40}$/;
-  const phoneNumberRegex = /^[0-9]{10,}$/;
-  const licenseNumberRegex = /^[A-Za-z0-9]{5,}$/;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,202 +19,120 @@ export default function SignUpForm() {
       ...formData,
       [name]: value
     });
-    setErrors({
-      ...errors,
-      [name]: ""
-    });
-  };
-
-  const validateStep = () => {
-    let currentErrors = {};
-    if (step === 1 && !usernameRegex.test(formData.username)) {
-      currentErrors.username = "Username must be at least 3 characters and contain only alphanumeric characters.";
-    }
-    if (step === 2 && !metamaskIdRegex.test(formData.metamaskId)) {
-      currentErrors.metamaskId = "Invalid Metamask ID. Must be a valid 42-character hexadecimal address starting with 0x.";
-    }
-    if (step === 3 && !phoneNumberRegex.test(formData.phoneNumber)) {
-      currentErrors.phoneNumber = "Phone number must contain at least 10 digits.";
-    }
-    if (step === 4 && !licenseNumberRegex.test(formData.licenseNumber)) {
-      currentErrors.licenseNumber = "License number must contain at least 5 alphanumeric characters.";
-    }
-    setErrors(currentErrors);
-    return Object.keys(currentErrors).length === 0;
-  };
-
-  const handleNextStep = () => {
-    if (validateStep()) {
-      setStep(step + 1);
-    }
-  };
-
-  const handlePreviousStep = () => {
-    if (step > 1) setStep(step - 1);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateStep()) {
-      try {
-        // Submit the form data to the backend
-        const response = await fetch('http://localhost:4000/adduser', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData) // Send formData as JSON
-        });
-  
-        if (response.ok) {
-          console.log("Account created successfully");
-        } else {
-          console.error("Failed to create an account");
-        }
-      } catch (error) {
-        console.error("Failed to register successfully:", error);
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:4000/submit', formData); // Use Axios to make the POST request
+
+      if (response.status === 200) {
+        alert("Account created successfully");
+        setFormData({
+          username: "",
+          walletId: "",
+          email: "",
+          phoneNumber: "",
+          password: "",
+          confirmPassword: ""
+        }); // Reset form after successful submission
+      }
+    } catch (error) {
+      console.error("Failed to register successfully:", error);
+      // Check if the error has a response from the server
+      if (error.response) {
+        alert(`Failed to create an account: ${error.response.data.message || 'Unknown error'}`);
+      } else {
+        alert("An error occurred while creating your account. Please try again.");
       }
     }
   };
-  
-
-  // Progress bar percentage
-  const progress = (step / 4) * 100;
 
   return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ maxHeight: "100vh", padding: "20px" }}>
-      <Row className="w-100">
-        <Col md={8} lg={6} xl={10} className="mx-auto">
-          <h3 className="text-center mb-4" style={styles.title}>
-            Create an Account
-          </h3>
+    <Container>
+      <h3>Create an Account</h3>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your username"
+            name="username"
+            value={formData.username}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-          {/* Progress Bar */}
-          <ProgressBar now={progress} label={`${step}/4`} className="mb-4" style={styles.progressBar} />
+        <Form.Group controlId="formWalletId">
+          <Form.Label>Wallet ID</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your wallet ID"
+            name="walletId"
+            value={formData.walletId}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-          <Form onSubmit={handleSubmit} className="border p-4 shadow-sm rounded" style={styles.form}>
-            {step === 1 && (
-              <Form.Group controlId="formUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  required
-                  isInvalid={!!errors.username}
-                  style={styles.input}
-                />
-                <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
-              </Form.Group>
-            )}
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-            {step === 2 && (
-              <Form.Group controlId="formMetamaskId">
-                <Form.Label>Metamask ID</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your Metamask ID"
-                  name="metamaskId"
-                  value={formData.metamaskId}
-                  onChange={handleInputChange}
-                  required
-                  isInvalid={!!errors.metamaskId}
-                  style={styles.input}
-                />
-                <Form.Control.Feedback type="invalid">{errors.metamaskId}</Form.Control.Feedback>
-              </Form.Group>
-            )}
+        <Form.Group controlId="formPhoneNumber">
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your phone number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-            {step === 3 && (
-              <Form.Group controlId="formPhoneNumber">
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control
-                  placeholder="Enter your phone number"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleInputChange}
-                  required
-                  isInvalid={!!errors.phoneNumber}
-                  style={styles.input}
-                />
-                <Form.Control.Feedback type="invalid">{errors.phoneNumber}</Form.Control.Feedback>
-              </Form.Group>
-            )}
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter your password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-            {step === 4 && (
-              <Form.Group controlId="formLicenseNumber">
-                <Form.Label>License Number</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your license number"
-                  name="licenseNumber"
-                  value={formData.licenseNumber}
-                  onChange={handleInputChange}
-                  required
-                  isInvalid={!!errors.licenseNumber}
-                  style={styles.input}
-                />
-                <Form.Control.Feedback type="invalid">{errors.licenseNumber}</Form.Control.Feedback>
-              </Form.Group>
-            )}
+        <Form.Group controlId="formConfirmPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Confirm your password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
 
-            {/* Navigation buttons */}
-            <div className="d-flex justify-content-between mt-4">
-              {step > 1 && (
-                <Button variant="outline-secondary" onClick={handlePreviousStep} style={styles.button}>
-                  Previous
-                </Button>
-              )}
-              {step < 4 ? (
-                <Button variant="primary" onClick={handleNextStep} style={styles.button}>
-                  Next
-                </Button>
-              ) : (
-                <Button variant="success" type="submit" style={styles.button}>
-                  Submit
-                </Button>
-              )}
-            </div>
-          </Form>
-        </Col>
-      </Row>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </Container>
   );
 }
-
-const styles = {
-  form: {
-    padding: "24px", // Increased padding for better spacing
-    borderRadius: "12px", // Softer corners for a modern look
-    boxShadow: "0 4px 20px rgba(0,0,0,0.1)", // More pronounced shadow for depth
-    backgroundColor: "#fff", // Clean background
-    width: "100%",
-    maxWidth: "600px", // Set a max-width for larger screens
-  },
-  input: {
-    width: "100%",
-    padding: "14px",
-    fontSize: "16px",
-    border: "1px solid #ced4da", // Slightly lighter border
-    borderRadius: "8px", // Softer corners for inputs
-    boxShadow: "inset 0 1px 3px rgba(0,0,0,0.1)", // Softer shadow for inputs
-  },
-  title: {
-    marginBottom: "24px",
-    fontWeight: "700", // Slightly bolder title for emphasis
-    fontSize: "28px",
-    color: "#333",
-  },
-  progressBar: {
-    height: "10px", // Thicker progress bar for visibility
-    borderRadius: "5px", // Softer corners
-  },
-  button: {
-    width: "48%", // Buttons with some space between
-    padding: "12px", 
-    fontSize: "16px",
-    fontWeight: "600", // Bolder text for buttons
-  },
-};
