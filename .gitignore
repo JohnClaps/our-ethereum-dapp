@@ -4,3 +4,9 @@ node_modules
 #Hardhat files
 cache
 artifacts
+#other confidential data
+/.env
+/package.json
+/package-lock.json
+/backend/db.js
+/backend/schema.sql
