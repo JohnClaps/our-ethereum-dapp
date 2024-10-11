@@ -10,7 +10,7 @@ import SecurityScreen from './SecurityScreen';
 import SupportScreen from './SupportScreen';
 import UserManagementScreen from './UserManagementScreen';
 import SystemMonitoringScreen from "./SystemMonitoringScreen";
-import RoyaltiesPaymentScreen from './RolyatiesPaymentScreen';
+import RoyaltiesPaymentScreen from './RoyaltiesPaymentScreen';
 import AnalyticsScreen from "./AnalyticsScreen";
 import '../styles/Sidebar.css'; // Custom styling
 
@@ -20,8 +20,20 @@ export const Sidebar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMenuClick = (screen) => {
-    setContent(screen);
-    setActiveQuickLink(null); // Reset quick link selection when main menu changes
+    if (screen === 'Logout') {
+      const isConfirmed = window.confirm('Are you sure you want to log out?');
+      if (isConfirmed) {
+        // Clear user session data
+        localStorage.removeItem('user'); // or wherever your user session data is stored
+        console.log("User logged out.");
+        
+        // Redirect the user to the login page
+        window.location.href = '/'; // Change this to your login page URL
+      }
+    } else {
+      setContent(screen);
+      setActiveQuickLink(null); // Reset quick link selection when main menu changes
+    }
   };
 
   const renderContent = () => {
@@ -102,7 +114,7 @@ export const Sidebar = () => {
             <ListGroup variant="flush">
               <ListGroup.Item action onClick={() => handleMenuClick('HomeScreen')} className="bg-dark text-white">
                 <FaHome style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Dashboard
+                Home
               </ListGroup.Item>
               <ListGroup.Item action onClick={() => handleMenuClick('RoyaltiesPaymentScreen')} className="bg-dark text-white">
                 <FaCreditCard style={{ marginRight: '8px' }} size={24} className="me-2" />

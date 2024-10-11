@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Row, Col, Form, FormControl, Button, Card } from 'react-bootstrap';
-import { FaHome, FaUser, FaChartLine, FaWrench, FaSignOutAlt, FaBell, FaSearch, FaLink, FaBalanceScale, FaDesktop, FaHammer, FaReceipt, FaBookOpen, FaLock, FaObjectGroup, FaUsers } from 'react-icons/fa';
+import { FaHome, FaUser, FaChartLine, FaWrench, FaSignOutAlt, FaBell, FaSearch, FaLink, FaBalanceScale, FaDesktop, FaHammer, FaReceipt, FaBookOpen, FaLock, FaUsers } from 'react-icons/fa';
 import EnvironmentalCompliance from './EnvironmentalCompliance';
 import profile from '../assets/profile.jpg';
 import '../styles/Sidebar.css'; // Custom styling
@@ -10,7 +10,7 @@ import LicensePermits from '../components/LicensePermits';
 import LogMineralExtraction from '../components/LogMineralExtraction';
 import MineralInventory from '../components/MineralInventory';
 import ProductionReport from '../components/ProductionReport';
-import SafetyInspection from '../components/SafetyInspection.js';
+import SafetyInspection from '../components/SafetyInspection';
 import ScheduleMaintenance from '../components/ScheduleMaintenance.js';
 import SupervisorCommunication from '../components/SupervisorCommunication';
 import SiteUserHomeScreen from '../components/SiteUserHomeScreen';
@@ -20,8 +20,20 @@ export const Sidebar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMenuClick = (screen) => {
-    setContent(screen);
-    setActiveQuickLink(null); // Reset quick link selection when main menu changes
+    if (screen === 'Logout') {
+      const isConfirmed = window.confirm('Are you sure you want to log out?');
+      if (isConfirmed) {
+        // Clear user session data
+        localStorage.removeItem('user'); // or wherever your user session data is stored
+        console.log("User logged out.");
+        
+        // Redirect the user to the login page
+        window.location.href = '/'; // Change this to your login page URL
+      }
+    } else {
+      setContent(screen);
+      setActiveQuickLink(null); // Reset quick link selection when main menu changes
+    }
   };
 
   const renderContent = () => {
@@ -42,11 +54,11 @@ export const Sidebar = () => {
         return <MineralInventory/>;
       case 'ProductionReport':
         return <ProductionReport/>;
+      case 'SafetyInspection':
         return <SafetyInspection/>;
       case 'ScheduleMaintenance':
         return <ScheduleMaintenance/>;
-        case 'SupervisorCommunication':
-        case 'SafetyInspection':
+      case 'SupervisorCommunication':
         return <SupervisorCommunication/>;    
       default:
         return <SiteUserHomeScreen />;

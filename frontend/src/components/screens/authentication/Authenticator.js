@@ -5,7 +5,7 @@ import SiteAdminSideBar from '../dashboard/site-admin/components/SiteAdminSideBa
 import VerifierSideBar from '../dashboard/verifier/components/VerifierSideBar';
 import SiteUserSideBar from '../dashboard/site-users-dashboard/components/SiteUserSideBar';
 
-const App = () => {
+const Authenticator = () => {
   return (
     <Router>
       <Routes>
@@ -18,4 +18,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Authenticator;

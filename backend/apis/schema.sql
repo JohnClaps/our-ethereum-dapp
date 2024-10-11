@@ -6,7 +6,8 @@ CREATE TABLE users (
     username VARCHAR(100),
     wallet_id VARCHAR(42) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE,
-    phone_number INT(10),
+    licence_number VARCHAR UNIQUE,
+    phone_number VARCHAR(20),
     pass_word VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

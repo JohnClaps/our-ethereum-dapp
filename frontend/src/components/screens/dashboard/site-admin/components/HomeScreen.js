@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import '../styles/HomeScreen.css';
 
 //Importing screen components
-import RolyatiesPaymentScreen from './RolyatiesPaymentScreen';
+import RolyatiesPaymentScreen from './RoyaltiesPaymentScreen';
 import ReportsScreen from './ReportsScreen';
 import UserManagementScreen from './UserManagementScreen';
 import SecurityScreen from './SecurityScreen';

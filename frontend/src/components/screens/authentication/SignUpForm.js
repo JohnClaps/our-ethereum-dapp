@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
     username: "",
-    walletId: "",
+    // walletID:"",
     email: "",
     phoneNumber: "",
     password: "",
@@ -29,13 +29,15 @@ export default function SignUpForm() {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/submit', formData); // Use Axios to make the POST request
+      // Make POST request using Axios
+      const response = await axios.post('http://localhost:4000/submit', formData);
 
-      if (response.status === 200) {
+      // Check for success response (should be 201, not 200)
+      if (response.status === 201) {
         alert("Account created successfully");
         setFormData({
           username: "",
-          walletId: "",
+          // walletID:"",
           email: "",
           phoneNumber: "",
           password: "",
@@ -44,6 +46,7 @@ export default function SignUpForm() {
       }
     } catch (error) {
       console.error("Failed to register successfully:", error);
+
       // Check if the error has a response from the server
       if (error.response) {
         alert(`Failed to create an account: ${error.response.data.message || 'Unknown error'}`);
@@ -69,18 +72,6 @@ export default function SignUpForm() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formWalletId">
-          <Form.Label>Wallet ID</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your wallet ID"
-            name="walletId"
-            value={formData.walletId}
-            onChange={handleInputChange}
-            required
-          />
-        </Form.Group>
-
         <Form.Group controlId="formEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -93,10 +84,11 @@ export default function SignUpForm() {
           />
         </Form.Group>
 
+
         <Form.Group controlId="formPhoneNumber">
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
-            type="text"
+            type="tel"
             placeholder="Enter your phone number"
             name="phoneNumber"
             value={formData.phoneNumber}
@@ -128,6 +120,7 @@ export default function SignUpForm() {
             required
           />
         </Form.Group>
+
         <Button variant="primary" type="submit">
           Submit
         </Button>
@@ -135,4 +128,3 @@ export default function SignUpForm() {
     </Container>
   );
 }
-

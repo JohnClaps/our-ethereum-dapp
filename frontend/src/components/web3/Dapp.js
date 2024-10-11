@@ -1,3 +1,40 @@
+import React from "react";
+
+// We'll use ethers to interact with the Ethereum network and our contract
+import { ethers } from "ethers";
+
+// We import the contract's artifacts and address here, as we are going to be
+// using them with ethers
+import TokenArtifact from "../../contracts/Token.json";
+import contractAddress from "../../contracts/contract-address.json";
+
+// All the logic of this dapp is contained in the Dapp component.
+// These other components are just presentational ones: they don't have any
+// logic. They just render HTML.
+import { NoWalletDetected } from "./NoWalletDetected";
+import { ConnectWallet } from "./LandingPage";
+import Authenticator from "../screens/authentication/Authenticator";
+import { Transfer } from "./Transfer";
+import { TransactionErrorMessage } from "./TransactionErrorMessage";
+import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
+import { NoTokensMessage } from "./NoTokensMessage";
+// This is the default id used by the Hardhat Network
+const HARDHAT_NETWORK_ID = '31337';
+
+// This is an error code that indicates that the user canceled a transaction
+const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
+
+// This component is in charge of doing these things:
+//   1. It connects to the user's wallet
+//   2. Initializes ethers and the Token contract
+//   3. Polls the user balance to keep it updated.
+//   4. Transfers tokens by sending transactions
+//   5. Renders the whole application
+//
+// Note that (3) and (4) are specific of this sample application, but they show
+// you how to keep your Dapp and contract's state in sync,  and how to send a
+// transaction.
+
 export class Dapp extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +82,7 @@ export class Dapp extends React.Component {
     // If the token data or the user's balance hasn't loaded yet, we show
     // a loading component.
     if (!this.state.tokenData || !this.state.balance) {
-      return <App />;
+      return <Authenticator />;
     }
 
     // If everything is loaded, we render the application.

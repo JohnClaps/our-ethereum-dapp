@@ -15,10 +15,21 @@ export const SideBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMenuClick = (screen) => {
-    setContent(screen);
-    setActiveQuickLink(null); // Reset quick link selection when main menu changes
+    if (screen === 'Logout') {
+      const isConfirmed = window.confirm('Are you sure you want to log out?');
+      if (isConfirmed) {
+        // Clear user session data
+        localStorage.removeItem('user'); // or wherever your user session data is stored
+        console.log("User logged out.");
+        
+        // Redirect the user to the login page
+        window.location.href = '/'; // Change this to your login page URL
+      }
+    } else {
+      setContent(screen);
+      setActiveQuickLink(null); // Reset quick link selection when main menu changes
+    }
   };
-
   const renderContent = () => {
     switch (content) {
       case 'VerifierHomeScreen':
@@ -85,7 +96,6 @@ export const SideBar = () => {
         <Row className="flex-nowrap">
           <Col xs={2} className={`sidebar ${isScrolled ? 'scrolled' : ''}`}>
           {/* Sidebar */}
-                Aunthentication
             <h1 className="text-center mb-4">LOGO</h1>
             <ListGroup variant="flush">
             <ListGroup.Item action onClick={() => handleMenuClick('VerifierHomeScreen')} className="bg-dark text-white">
