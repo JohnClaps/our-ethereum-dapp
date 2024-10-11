@@ -128,7 +128,6 @@ export default function SignUpForm() {
             required
           />
         </Form.Group>
-
         <Button variant="primary" type="submit">
           Submit
         </Button>
@@ -136,3 +135,4 @@ export default function SignUpForm() {
     </Container>
   );
 }
+
