@@ -19,7 +19,7 @@ const pool = new Pool({
 });
 
 // JWT secret key
-const JWT_SECRET = '08081626faa9bf88afe99f2766fe6b85d0aa30d4263a051ceb323be63777cd16';
+const JWT_SECRET = '';
 
 // Helper function to generate a new secret for OTP
 const generateSecret = () => speakeasy.generateSecret({ length: 20 }).base32;
