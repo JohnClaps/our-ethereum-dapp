@@ -9,7 +9,12 @@ import MineralSalesAuditScreen from './MineralSalesAuditScreen';
 import ProductionDataVerificationScreen from './ProductionDataVerificationScreen';
 import RoyaltiesPaymentVerificationScreen from './RoyaltiesPaymentVerificationScreen';
 import VerifierHomeScreen from './VerifierHomeScreen';
-export const SideBar = () => {
+import HeaderSection from '../../site-admin/components/SiteAdminHeaderSection';
+import VerifierMainLayout from '../components/VerifierMainLayout';
+import '../../site-admin/styles/Header.css'
+import VerifierHeaderSection from '../components/VerifierHeaderSection';
+
+export const VerifierSideBar = () => {
   const [content, setContent] = useState('HomeScreen');
   const [activeQuickLink, setActiveQuickLink] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,97 +81,13 @@ export const SideBar = () => {
   return (
     <div className="sidebar-container">
       {/* Top Bar */}
-      <header className="fixed-header">
-        <Form inline className="d-flex align-items-center">
-          <FormControl type="text" placeholder="Search" className="me-2" />
-          <Button variant="outline-success">
-            <FaSearch />
-          </Button>
-          <FaBell size={24} className="ms-3" />
-          <img 
-            src={profile}
-            alt="Profile" 
-            className="rounded-circle ms-3" 
-            style={{ width: '40px', height: '40px' }}
-          />
-        </Form>
-      </header>
-
-      <Container fluid className="p-0">
-        <Row className="flex-nowrap">
-          <Col xs={2} className={`sidebar ${isScrolled ? 'scrolled' : ''}`}>
-          {/* Sidebar */}
-            <h1 className="text-center mb-4">LOGO</h1>
-            <ListGroup variant="flush">
-            <ListGroup.Item action onClick={() => handleMenuClick('VerifierHomeScreen')} className="bg-dark text-white">
-                <FaHome style={{ marginRight: '8px' }}size={24} className="me-2" />
-                Home
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('AuthenticationScreen')} className="bg-dark text-white">
-                <FaLock style={{ marginRight: '8px' }}size={24} className="me-2" />
-                Authentication
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('RoyaltiesPaymentVerificationScreen')} className="bg-dark text-white">
-                <FaCreditCard style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Royalties
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('ExportProcessMonitoringScreen')} className="bg-dark text-white">
-                <FaChartLine style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Exports
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('MineralSalesAuditScreen')} className="bg-dark text-white">
-                <FaUser style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Sales
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('ProductionDataVerificationScreen')} className="bg-dark text-white">
-              <FaWrench style={{ marginRight: '8px' }} size={24} className="me-2" />
-              Production
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={() => handleMenuClick('Logout')} className="bg-dark text-white">
-                <FaSignOutAlt  style={{ marginRight: '8px' }} size={24} className="me-2" />
-                Logout
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          {/* Content Area */}
-          <Col xs={8} className="content-area">
-            {renderContent()}
-          </Col>
-
-          {/* Right Pane with Quick Links */}
-          <Col xs={2} className="quick-links">
-            <h4 className="mb-3">Quick Links</h4>
-            <ListGroup variant="flush">
-              {quickLinks.map(link => (
-                <ListGroup.Item 
-                  key={link.id}
-                  action
-                  onClick={() => setActiveQuickLink(link.id === activeQuickLink ? null : link.id)}
-                  className="bg-secondary text-white d-flex align-items-center"
-                >
-                  <FaLink size={20} className="me-2" />
-                  {link.title}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-
-            {activeQuickLink && (
-              <Card className="mt-3 bg-light text-dark">
-                <Card.Body>
-                  <Card.Title>
-                    {quickLinks.find(link => link.id === activeQuickLink)?.title}
-                  </Card.Title>
-                  <Card.Text>
-                    {quickLinks.find(link => link.id === activeQuickLink)?.content}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <VerifierHeaderSection/>
+      <VerifierMainLayout
+       handleMenuClick={handleMenuClick}
+       renderContent={renderContent}
+       quickLinks={quickLinks}
+      />
     </div>
   );
 };
-export default SideBar;
+export default VerifierSideBar;

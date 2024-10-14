@@ -17,6 +17,7 @@
     "ipfs-http-client": "^60.0.1",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
+    "react-avatar-edit": "^1.2.0",
     "react-bootstrap": "^2.10.4",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",

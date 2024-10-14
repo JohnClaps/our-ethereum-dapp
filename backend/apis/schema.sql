@@ -80,3 +80,30 @@ CREATE TABLE compliance (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+/*Manage users relation schema*/
+CREATE TABLE manage_users (
+    id SERIAL PRIMARY KEY,              -- Unique identifier for each user
+    name VARCHAR(100) NOT NULL,        -- User's full name
+    email VARCHAR(100) NOT NULL UNIQUE, -- User's email address, must be unique
+    role VARCHAR(50) NOT NULL,         -- User's role (e.g., admin, user, verifier)
+    created_at TIMESTAMP DEFAULT NOW(), -- Timestamp when the user is created
+    updated_at TIMESTAMP DEFAULT NOW()  -- Timestamp for last update
+);
+
+-- Optional: Create an index for quick lookups by email
+CREATE INDEX idx_email ON manage_users(email);
+
+-- Optional: Create a trigger to update the updated_at field on record updates
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW(); -- Set updated_at to the current timestamp
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_manage_users_updated_at
+BEFORE UPDATE ON manage_users
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();

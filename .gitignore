@@ -5,8 +5,8 @@ node_modules
 cache
 artifacts
 #other confidential data
-/.env
-/package.json
-/package-lock.json
-/backend/db.js
-/backend/schema.sql
+.env
+package.json
+package-lock.json
+backend/db.js
+backend/schema.sql
