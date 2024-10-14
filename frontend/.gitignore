@@ -22,7 +22,9 @@ src/contracts
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/package-lock.json
-/package.json
-/package dev-cmds.txt
+package-lock.json
+package.json
+package dev-cmds.txt
 .env
+backend/apis/schema.sql
+backend/apis/node_modules

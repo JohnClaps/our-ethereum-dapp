@@ -46,7 +46,7 @@ app.post('/submit', async (req, res) => {
 });
 
 // Login route with OTP generation logic using Speakeasy
-app.post('/login', async (req, res) => {
+app.post('/login', async (req, res) => {  
   const { username, password } = req.body;
   const client = await pool.connect();
 
